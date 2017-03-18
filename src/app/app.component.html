@@ -1,16 +1,34 @@
-<div class="widgets-row"
+<!-- <div class="widgets-row"
  fxLayout
  fxLayout.xs="column"
  fxLayoutAlign="start"
- fxLayoutWrap="wrap">
-  <nav md-tab-nav-bar>
+ fxLayoutWrap="wrap"> -->
+  <!-- <nav md-tab-nav-bar>
       <a md-tab-link
           *ngFor="let routeLink of routeLinks; let i = index"
-          [routerLink]="routeLink.link"
-          [active]="activeLinkIndex === i"
-          (click)="activeLinkIndex = i">
+           [routerLink]="routeLink.link"
+           (click)="activeLinkIndex = i">
            {{routeLink.label}}
        </a>
   </nav>
+  <router-outlet></router-outlet> -->
+<!-- </div> -->
+<div>
+  <md-toolbar color="primary">
+    <img src="./assets/img/8451-logo.png" />
+    <h4>Developer</h4>
+    <span class="spacer"></span>
+  </md-toolbar>
+  <nav md-tab-nav-bar>
+      <a md-tab-link
+          *ngFor="let tabLink of routeLinks; let i = index"
+          [routerLink]="tabLink.link"
+          [active]="activeLinkIndex === i"
+          (click)="activeLinkIndex = i">
+           {{tabLink.label}}
+       </a>
+  </nav>
+</div>
+<div>
   <router-outlet></router-outlet>
 </div>
