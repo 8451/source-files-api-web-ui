@@ -12,4 +12,5 @@ public class RestConfiguration extends WebMvcConfigurerAdapter{
   public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
     configurer.defaultContentType(MediaType.APPLICATION_JSON);
   }
+
 }
