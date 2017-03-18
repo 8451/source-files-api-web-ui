@@ -18,6 +18,6 @@ export class AppComponent {
       { label: 'Registration', link: 'registration' }
     ];
 
-    this.activeLinkIndex = this.routeLinks.indexOf(this.routeLinks.find(tab => router.url.indexOf(tab.link) !== -1));
+    // this.activeLinkIndex = this.routeLinks.indexOf(this.routeLinks.find(tab => router.url.indexOf(tab.link) !== -1));
   }
 }
