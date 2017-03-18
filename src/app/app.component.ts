@@ -17,7 +17,5 @@ export class AppComponent {
       { label: 'Profile', link: 'profile' },
       { label: 'Terms', link: 'terms' }
     ];
-
-    // this.activeLinkIndex = this.routeLinks.indexOf(this.routeLinks.find(tab => router.url.indexOf(tab.link) !== -1));
   }
 }

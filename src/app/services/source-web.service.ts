@@ -6,7 +6,9 @@ import { Config } from '../config';
 export class SourceWebService {
   public githubUserId;
 
-  constructor(public http: Http, public config: Config) { }
+  constructor(
+    public http: Http,
+    public config: Config) { }
 
   getAPIKeys() {
 

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+// services
+import { SourceWebService } from '../services/source-web.service';
+
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -7,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationComponent implements OnInit {
   checkboxTruthy = false;
-  constructor() { }
+  constructor(
+    private sourceWebService: SourceWebService
+  ) { }
 
   ngOnInit() {
   }
