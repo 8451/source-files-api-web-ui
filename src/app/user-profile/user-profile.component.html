@@ -5,7 +5,7 @@
       <md-card>
         <h3>API Data Keys for {{githubUserId}}</h3>
         <div>
-          <i class="material-icons green">library_add</i>
+          <i class="material-icons green" md-tooltip="Add New API Key">library_add</i>
         </div>
         <table *ngFor="let apiKey of apiKeys" >
           <tr>
@@ -13,7 +13,7 @@
               {{ apiKey.name }}
             </td>
             <td width="20%">
-              <i class="material-icons md-18 red" >delete</i>
+              <i class="material-icons md-18 red" md-tooltip="Delete this API Key" >delete</i>
             </td>
           </tr>
         </table>
@@ -23,7 +23,7 @@
       <md-card>
         <div class="md-headline">
           DELETE MY ACCOUNT FOREVER
-          <i class="material-icons red">delete_forever</i>
+          <i class="material-icons red" md-tooltip="Delete my account forever.  Cannot undo.">delete_forever</i>
         </div>
 
       </md-card>
