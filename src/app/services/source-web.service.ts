@@ -4,11 +4,20 @@ import { Config } from '../config';
 
 @Injectable()
 export class SourceWebService {
+  public githubUserId;
 
   constructor(public http: Http, public config: Config) { }
 
-  getAPIKeys(userId) {
+  getAPIKeys() {
 
+  }
+
+  deleteAccount() {
+
+  }
+
+  loginWithGithubAccount(userId) {
+    // if successful githubUserId;
   }
 
 }
