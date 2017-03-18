@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MaterialModule } from '@angular/material';
 import { RegistrationComponent } from './registration.component';
+import { MaterialModule } from '@angular/material';
 
 describe('RegistrationComponent', () => {
   let component: RegistrationComponent;
@@ -8,7 +8,11 @@ describe('RegistrationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [RegistrationComponent]
+      imports: [MaterialModule],
+      declarations: [
+        RegistrationComponent
+      ],
+      providers: []
     })
       .compileComponents();
   }));

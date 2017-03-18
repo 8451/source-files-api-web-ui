@@ -1,15 +1,10 @@
-<!-- <div class="widgets-row"
- fxLayout
- fxLayout.xs="column"
- fxLayoutAlign="start"
- fxLayoutWrap="wrap"> -->
   <nav md-tab-nav-bar>
       <a md-tab-link
           *ngFor="let routeLink of routeLinks; let i = index"
            [routerLink]="routeLink.link"
+           [active]="activeLinkIndex === i"
            (click)="activeLinkIndex = i">
            {{routeLink.label}}
        </a>
   </nav>
   <router-outlet></router-outlet>
-<!-- </div> -->

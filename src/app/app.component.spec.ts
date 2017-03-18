@@ -2,6 +2,11 @@ import { TestBed, async, inject } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { Router, RouterLink } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { MdTabLink } from '@angular/material';
+
+
+// NOTE:  There is a documented bug in Angular Material that will
+// cause the Active unit test to fail: https://github.com/angular/material2/issues/1967
 
 describe('AppComponent', () => {
 
@@ -13,7 +18,9 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
-      imports: [RouterTestingModule],
+      imports: [
+        RouterTestingModule
+      ],
       providers: [
         {
           provide: Router,

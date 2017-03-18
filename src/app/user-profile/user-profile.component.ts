@@ -11,11 +11,12 @@ export class UserProfileComponent implements OnInit {
   public githubUserId;
   public apiKeys;
   public addAnotherAPIKey = true;
+
   constructor(service: SourceWebService, config: Config) {
-    this.loadAPIKeys();
   }
 
   ngOnInit() {
+    this.loadAPIKeys();
   }
 
   private loadAPIKeys() {
@@ -25,6 +26,18 @@ export class UserProfileComponent implements OnInit {
       { name: 'APIKey2' },
       { name: 'APIKey3' }
     ];
+  }
+
+  deleteAPIKey(apiKey) {
+    console.log('call delete event', apiKey);
+  }
+
+  addAPIKey() {
+    console.log('call add event');
+  }
+
+  deleteAccount() {
+    console.log('call delete account');
   }
 
 }
