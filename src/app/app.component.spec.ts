@@ -2,6 +2,8 @@ import { TestBed, async, inject } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { Router, RouterLink } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { MaterialModule } from '@angular/material';
+import { AuthService } from './services/auth.service';
 
 describe('AppComponent', () => {
 
@@ -13,19 +15,23 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
-      imports: [RouterTestingModule],
+      imports: [
+        RouterTestingModule,
+        MaterialModule
+      ],
       providers: [
         {
           provide: Router,
           useValue: mockRouter
-        }
+        },
+        AuthService
       ]
     });
     TestBed.compileComponents();
   });
 
   it('should construct', async(inject(
-    [Router], (router) => {
+    [Router, AuthService], (router, authService) => {
       const fixture = TestBed.createComponent(AppComponent);
       const app = fixture.debugElement.componentInstance;
 

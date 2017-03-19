@@ -9,20 +9,24 @@ import { MaterialModule } from '@angular/material';
 import { AuthService } from './auth.service';
 
 describe('AuthService', () => {
+  const mockRouter = { navigate: jasmine.createSpy('navigate') };
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [MaterialModule],
       providers: [AuthService,
-                  {
-                    provide: Http, useFactory: (
-                      backend: ConnectionBackend, defaultOptions: BaseRequestOptions) => {
-                        return new Http(backend, defaultOptions);
-                      }, deps: [MockBackend, BaseRequestOptions]
-                    },
-                    MockBackend,
-                    BaseRequestOptions,
-                    Router
-                  ]
+        {
+          provide: Http, useFactory: (
+            backend: ConnectionBackend, defaultOptions: BaseRequestOptions) => {
+            return new Http(backend, defaultOptions);
+          }, deps: [MockBackend, BaseRequestOptions]
+        },
+        MockBackend,
+        BaseRequestOptions,
+        {
+          provide: Router,
+          useValue: mockRouter
+        },
+      ]
     });
   });
 
