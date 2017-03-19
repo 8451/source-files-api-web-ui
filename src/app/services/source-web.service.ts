@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
 import { Config } from '../config';
 
 @Injectable()
@@ -9,15 +10,42 @@ export class SourceWebService {
   constructor(public http: Http, public config: Config) { }
 
   getAPIKeys() {
+    return this.http.get(this.config.GET_API_KEYS_URL)
+      .map((response: Response) => {
+        return response.json();
+      })
+      .catch((error: any) => Observable.throw(
+        'Error retrieving API Keys'));
+  }
+
+  addAPIKey(): Observable<any> {
+    return this.http.get(this.config.ADD_API_URL)
+      .map((response: Response) => {
+        return response.json();
+      })
+      .catch((error: any) => Observable.throw(
+        'Error retrieving API Keys'));
+
+  }
+
+  deleteAPIKey(apiKey): Observable<any> {
+    return this.http.get(this.config.DELETE_API_URL)
+      .map((response: Response) => {
+        return response.json();
+      })
+      .catch((error: any) => Observable.throw(
+        'Error deleting API Key'));
 
   }
 
   deleteAccount() {
+    return this.http.get(this.config.DELETE_ACCOUNT_URL)
+      .map((response: Response) => {
+        return response.json();
+      })
+      .catch((error: any) => Observable.throw(
+        'Error deleting account'));
 
-  }
-
-  loginWithGithubAccount(userId) {
-    // if successful githubUserId;
   }
 
 }

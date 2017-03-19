@@ -9,10 +9,10 @@ import { Config } from '../config';
 })
 export class UserProfileComponent implements OnInit {
   public githubUserId;
-  public apiKeys;
-  public addAnotherAPIKey = true;
+  public apiKeys = [];
+  public addAnotherAPIKey = false;
 
-  constructor(service: SourceWebService, config: Config) {
+  constructor(public service: SourceWebService, public config: Config) {
   }
 
   ngOnInit() {
@@ -26,14 +26,40 @@ export class UserProfileComponent implements OnInit {
       { name: 'APIKey2' },
       { name: 'APIKey3' }
     ];
+
+    this.service.getAPIKeys().subscribe(
+      response => {
+        console.log('getting API keys', response);
+        this.apiKeys = response.keys;
+      },
+      error => 'ERROR: ' + <any>error
+    );
+
+    // limit keys to 5
+    this.addAnotherAPIKey = (this.apiKeys.length <= this.config.MAX_ALLOWED_API_KEYS);
   }
 
   deleteAPIKey(apiKey) {
     console.log('call delete event', apiKey);
+    this.service.deleteAPIKey(apiKey).subscribe(
+      response => {
+        console.log('got add api key response');
+        this.loadAPIKeys();
+      },
+      error => 'ERROR: ' + <any>error
+    );
   }
 
   addAPIKey() {
-    console.log('call add event');
+    console.log('call add api key');
+
+    this.service.addAPIKey().subscribe(
+      response => {
+        console.log('got add api key response');
+        this.loadAPIKeys();
+      },
+      error => 'ERROR: ' + <any>error
+    );
   }
 
   deleteAccount() {

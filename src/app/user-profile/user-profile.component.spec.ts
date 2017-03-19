@@ -50,4 +50,5 @@ describe('UserProfileComponent', () => {
     component.ngOnInit();
     expect(component.apiKeys).toBeTruthy;
   });
+
 });
