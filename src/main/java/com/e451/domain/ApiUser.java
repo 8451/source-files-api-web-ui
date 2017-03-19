@@ -1,11 +1,11 @@
 package com.e451.domain;
 
-public class APIUser {
+public class ApiUser {
   private String name;
   private String username;
 
-  public APIUser(){}
-  public APIUser(String name, String username) {
+  public ApiUser(){}
+  public ApiUser(String name, String username) {
     this.name = name;
     this.username = username;
   }
