@@ -13,6 +13,12 @@ import { RegistrationComponent } from './registration/registration.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SourceWebService } from './services/source-web.service';
 import { AuthService } from './services/auth.service';
+import { AuthService } from './services/auth.service';
+
+import { AuthGuard } from './auth.guard';
+
+import { Config } from './config';
+
 import {} from 'jasmine';
 
 @NgModule({
@@ -32,7 +38,9 @@ import {} from 'jasmine';
   ],
   providers: [
     SourceWebService,
-    AuthService
+    AuthService,
+    AuthGuard,
+    Config
   ],
   bootstrap: [AppComponent]
 })

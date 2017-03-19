@@ -2,27 +2,31 @@ import { TestBed, inject } from '@angular/core/testing';
 import { Http, Request, Response, ResponseOptions, RequestOptionsArgs,
   ConnectionBackend, BaseRequestOptions, RequestOptions } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
-import { SourceWebService } from './source-web.service';
+import { Router } from '@angular/router';
 
-describe('SourceWebService', () => {
+import { MaterialModule } from '@angular/material';
+
+import { AuthService } from './auth.service';
+
+describe('AuthService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        {
-          provide: Http, useFactory: (
-            backend: ConnectionBackend, defaultOptions: BaseRequestOptions) => {
-            return new Http(backend, defaultOptions);
-          }, deps: [MockBackend, BaseRequestOptions]
-        },
-        MockBackend,
-        BaseRequestOptions,
-        SourceWebService
-      ]
+      imports: [MaterialModule],
+      providers: [AuthService,
+                  {
+                    provide: Http, useFactory: (
+                      backend: ConnectionBackend, defaultOptions: BaseRequestOptions) => {
+                        return new Http(backend, defaultOptions);
+                      }, deps: [MockBackend, BaseRequestOptions]
+                    },
+                    MockBackend,
+                    BaseRequestOptions,
+                    Router
+                  ]
     });
   });
 
-  it('should construct', inject([SourceWebService], (service: SourceWebService) => {
+  it('should be created', inject([AuthService], (service: AuthService) => {
     expect(service).toBeTruthy();
   }));
-
 });
