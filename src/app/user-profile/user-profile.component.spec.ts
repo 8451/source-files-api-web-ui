@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { MaterialModule } from '@angular/material';
 import { UserProfileComponent } from './user-profile.component';
 import { SourceWebService } from '../services/source-web.service';
@@ -50,5 +50,27 @@ describe('UserProfileComponent', () => {
     component.ngOnInit();
     expect(component.apiKeys).toBeTruthy;
   });
+
+  it('should call deleteAPIKey',
+    inject([], () => {
+      spyOn(component, 'deleteAPIKey');
+      component.deleteAPIKey('123');
+      expect(component.deleteAPIKey).toHaveBeenCalled();
+    }));
+
+  it('should call addAPIKey',
+    inject([], () => {
+      spyOn(component, 'addAPIKey');
+      component.addAPIKey();
+      expect(component.addAPIKey).toHaveBeenCalled();
+    }));
+
+  it('should call deleteAccount',
+    inject([], () => {
+      spyOn(component, 'deleteAccount');
+      component.deleteAccount();
+      expect(component.deleteAccount).toHaveBeenCalled();
+    }));
+
 
 });
