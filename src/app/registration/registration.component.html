@@ -1,34 +1,46 @@
-<div class="flex-container"
+<!-- <div class="flex-container"
      fxLayout="row"
      fxLayout.xs="column"
      fxLayoutAlign="center center"
      fxLayoutAlign.xs="start">
     <div class="flex-item" fxFlex="5%" fxFlex.xs="10%">  </div>
         <div class="flex-item" fxFlex>
-          <h1 class="md-display-3">84.51&deg; Data Set Registration</h1>
-          <h3 class="md-headline">
-            WELCOME TO THE PUBLIC APIs of 84.51&deg; DATA SETS
-          </h3>
-          <p></p>
+            <h1 class="md-display-3">84.51&deg; Data Set Registration</h1>
+            <h3 class="md-headline">
+              WELCOME TO THE PUBLIC APIs of 84.51&deg; DATA SETS
+            </h3>
+            <p></p>
 
-          <md-card>
-            <p>To use the 84.51&deg; data sets, you need to read and accept the <a href="/#/terms" target="_blank">Terms and Conditions</a></p>
-            <md-checkbox
-              [checked]="checkboxTruthy"
-              (change)="toggleCheckbox()">
-              I accept the Terms and Conditions</md-checkbox>
-              <p></p>
-              <div>
-                <button md-raised-button color="primary" [disabled]="!checkboxTruthy">ACCEPT</button>
-              </div>
-          </md-card>
-          <p></p>
-          <md-card>
-            <p>Login Using Your Github Credentials</p>
-            <div>
-              <button md-raised-button color="primary" [disabled]="!checkboxTruthy">LOGIN</button>
-            </div>
-          </md-card>
+            <md-card>
+              <p>To use the 84.51&deg; data sets, you need to read and accept the <a href="/#/terms" target="_blank">Terms and Conditions</a>.</p>
+              <md-checkbox
+                [checked]="checkboxTruthy"
+                (change)="toggleCheckbox()">
+                I accept the <a href="/#/terms" target="_blank">Terms and Conditions</a></md-checkbox>
+                <div>
+                  <button md-raised-button color="primary" [disabled]="!checkboxTruthy">REGISTER</button>
+                </div>
+            </md-card>
           </div>
   <div class="flex-item" fxFlex="5%" fxFlex.xs="10%">  </div>
+</div> -->
+
+<div class="register-card">
+  <md-card>
+    <md-card-header>
+      <md-card-title><h1>84.51&deg; Developer</h1></md-card-title>
+    </md-card-header>
+    <md-card-content>
+      <p>
+        Welcome to the 84.51&deg; Developer Console.  To begin to use our API's in
+        your application you must first view and accept our Terms and Conditions below.
+      </p>
+    </md-card-content>
+    <md-card-actions>
+      <md-checkbox
+      [checked]="checkboxTruthy"
+      (change)="toggleCheckbox()">I accept the <a href="/#/terms" target="_blank">Terms and Conditions</a></md-checkbox>
+      <button md-raised-button color="primary" (click)="register()" [disabled]="!checkboxTruthy">REGISTER</button>
+    </md-card-actions>
+  </md-card>
 </div>

@@ -1,0 +1,19 @@
+.register-card {
+  margin: auto;
+  max-width: 50%;
+
+  /**/
+  min-height: 300px;
+  height: auto;
+  width: 400px;
+  margin: 150px auto;
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/*.register-card-title h2{
+  color: light gray;
+  display: block;
+  text-align: center;
+}*/

@@ -1,3 +1,12 @@
+<nav md-tab-nav-bar>
+    <a md-tab-link
+        *ngFor="let tabLink of routeLinks; let i = index"
+        [active]="activeLinkIndex === i">
+        <!-- [routerLink]="tabLink.link"
+        (click)="activeLinkIndex = i"> -->
+         {{tabLink.label}}
+     </a>
+</nav>
 <div layout="row" layout-padding layout-margin layout-fill style="min-height: 224px;">
     <div flex>
 

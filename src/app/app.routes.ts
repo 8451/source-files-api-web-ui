@@ -6,9 +6,13 @@ import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
+// guards
+import { AuthGuard } from './auth.guard';
+
 export const ROUTES: Routes = [
-  { path: 'registration', component: RegistrationComponent },
-  { path: 'profile', component: UserProfileComponent },
+  { path: '', redirectTo: 'register', pathMatch: 'full' },
+  { path: 'register', component: RegistrationComponent },
+  { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard] },
   { path: 'terms', component: TermsAndConditionsComponent }
 ];
 

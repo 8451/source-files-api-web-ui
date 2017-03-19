@@ -5,6 +5,7 @@
 
 export const environment = {
   production: false,
-  githubAuthorizationUrl: 'http://localhost:4200/login', // for testing locally
+  githubAuthorizationUrl: 'http://localhost:8080/login', // for testing locally
+  userAuthUrl: '/user',
   authorizationRedirectUrl: '/profile'
 };

@@ -11,8 +11,18 @@ export class UserProfileComponent implements OnInit {
   public githubUserId;
   public apiKeys;
   public addAnotherAPIKey = true;
+
+  routeLinks: any[];
+  activeLinkIndex = 0;
+
+
   constructor(service: SourceWebService, config: Config) {
     this.loadAPIKeys();
+
+    // setup routing links for nav bar
+    this.routeLinks = [
+      { label: 'Profile', link: '' }
+    ];
   }
 
   ngOnInit() {

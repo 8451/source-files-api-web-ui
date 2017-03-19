@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+
+// services
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,14 +10,9 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'Source Files API Web';
-  routeLinks: any[];
-  activeLinkIndex = 0;
 
-  constructor(private router: Router) {
-    this.routeLinks = [
-      { label: 'Registration', link: 'registration' },
-      { label: 'Profile', link: 'profile' },
-      { label: 'Terms', link: 'terms' }
-    ];
-  }
+  constructor(
+    public authService: AuthService
+  ) { }
+
 }
