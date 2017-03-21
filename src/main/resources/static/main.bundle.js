@@ -243,7 +243,14 @@ var UserProfileComponent = (function () {
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 var environment = {
-    production: false
+    production: false,
+    githubAuthorizationUrl: 'http://localhost:8080/login',
+    userAuthUrl: '/user',
+    authorizationRedirectUrl: '/profile',
+    GET_API_KEYS_URL: '',
+    ADD_API_URL: '',
+    DELETE_API_URL: '',
+    DELETE_ACCOUNT_URL: ''
 };
 //# sourceMappingURL=/Users/h428219/source/java/source-files-api-web-ui/src/environment.js.map
 
