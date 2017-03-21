@@ -18,8 +18,7 @@ export class AuthService {
   ) { }
 
   login(): void {
-    this.isLoggedIn = true;
-    this.router.navigate(['/profile']);
+    this.http.get(environment.userAuthUrl).subscribe(this.router.navigate['/profile'], (error) => { console.log(error); });
   }
 
   register(): void {
@@ -32,10 +31,4 @@ export class AuthService {
     this.isLoggedIn = false;
     this.router.navigate(['/']);
   }
-
-  loggedIn(): Observable<boolean> {
-    return this.http.get(environment.userAuthUrl)
-                     .map(response => response.json() ? true : false);
-  }
-
 }

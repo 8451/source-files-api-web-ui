@@ -32,10 +32,8 @@ export class RegistrationComponent implements OnInit {
   }
 
   login(): void {
-    if (this.checkboxTruthy) {
-      if (!this.authService.loggedIn()) {
-        this.authService.login();
-      }
+    if (this.authService.isLoggedIn) {
+      this.authService.login();
     }
   }
 
