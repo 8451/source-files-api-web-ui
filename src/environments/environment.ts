@@ -11,5 +11,6 @@ export const environment = {
   GET_API_KEYS_URL: '',
   ADD_API_URL: '',
   DELETE_API_URL: '',
-  DELETE_ACCOUNT_URL: ''
+  DELETE_ACCOUNT_URL: '',
+  MAX_ALLOWED_API_KEYS: 5
 };

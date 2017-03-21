@@ -1,9 +1,43 @@
 <div layout="row" layout-padding layout-margin layout-fill style="min-height: 224px;">
     <div flex>
 
-      <h1 class="md-display-3">User Profile Works</h1>
+      <h1 class="md-display-3">User Profile</h1>
+      <md-card>
+        <div layout="row" >
+          <div flex>
+              <button md-button md-tooltip="Add New API Key" (click)="addAPIKey()" [disabled]="!addAnotherAPIKey">
+                <md-icon class="green">add</md-icon>
+              </button>
+          </div>
+          <div flex>
+            <h3>API Data Keys for {{githubUserId}}</h3>
+          </div>
+        </div>
+        <div>
+        </div>
+        <table *ngFor="let apiKey of apiKeys" >
+          <tr>
+            <td width="80%">
+              {{ apiKey.name }}
+            </td>
+            <td width="20%">
+              <button md-button md-tooltip="Delete this API Key" (click)="deleteAPIKey(apiKey)" >
+                    <md-icon class="red">delete</md-icon>
+              </button>
+            </td>
+          </tr>
+        </table>
+      </md-card>
       <p>
-        THIS 84.51° SOURCE FILES SITE (THE “SITE”) IS OPERATED BY 84.51° LIMITED OR ONE OF 84.51° LIMITED’S WHOLLY OWNED SUBSIDIARIES OR JOINT VENTURE COMPANIES THAT ARE LOCATED IN YOUR MARKET (TOGETHER THE “84.51° GROUP”). THIS IS A LEGAL AGREEMENT BETWEEN YOU AND 84.51° LIMITED STATING THE TERMS THAT GOVERN YOUR USE OF THE SITE AND ANY DATA FILES (“SOURCE FILES”) PROVIDED BY A MEMBER OF THE 84.51° GROUP ON THE SITE. PLEASE READ THIS AGREEMENT BEFORE PRESSING THE "AGREE" BUTTON AND CHECKING THE BOX AT THE BOTTOM OF THIS PAGE. BY PRESSING "AGREE," YOU ARE AGREEING TO BE BOUND BY THE TERMS OF THIS AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF THIS AGREEMENT, PRESS "CANCEL" AND YOU WILL BE UNABLE TO ACCESS THE DATA.
       </p>
+      <md-card>
+        <div class="md-headline">
+          DELETE MY ACCOUNT
+          <button md-fab md-tooltip="Delete my account forever.  Cannot undo." (click)="deleteAccount()">
+                <md-icon class="red">delete_forever</md-icon>
+          </button>
+        </div>
+
+      </md-card>
     </div>
 </div>
