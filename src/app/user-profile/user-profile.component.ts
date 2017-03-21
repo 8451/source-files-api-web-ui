@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SourceWebService } from '../services/source-web.service';
-import { Config } from '../config';
+import { environment } from '../config';
 
 @Component({
   selector: 'app-user-profile',
