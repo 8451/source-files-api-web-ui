@@ -10,6 +10,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { SourceWebService } from './services/source-web.service';
 import {} from 'jasmine';
 
 @NgModule({
@@ -26,7 +27,7 @@ import {} from 'jasmine';
     MaterialModule.forRoot(),
     RouterModule.forRoot(ROUTES, { useHash: true })
   ],
-  providers: [],
+  providers: [SourceWebService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
