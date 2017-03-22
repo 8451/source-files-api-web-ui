@@ -15,9 +15,6 @@ import { SourceWebService } from './services/source-web.service';
 import { AuthService } from './services/auth.service';
 
 import { AuthGuard } from './auth.guard';
-
-import { Config } from './config';
-
 import {} from 'jasmine';
 
 @NgModule({
@@ -38,8 +35,7 @@ import {} from 'jasmine';
   providers: [
     SourceWebService,
     AuthService,
-    AuthGuard,
-    Config
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
