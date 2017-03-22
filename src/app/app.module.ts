@@ -12,12 +12,14 @@ import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-co
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SourceWebService } from './services/source-web.service';
 import {} from 'jasmine';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TermsAndConditionsComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
