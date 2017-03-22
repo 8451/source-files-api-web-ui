@@ -5,6 +5,11 @@
     <h4>Developer</h4>
     <span class="spacer"></span>
     <button md-button
+          *ngIf="authService.isLoggedIn"
+          (click)="redirectToProfile()">
+          <md-icon>info</md-icon>PROFILE
+    </button>
+    <button md-button
           *ngIf="!authService.isLoggedIn"
           (click)="authService.login()">
           <md-icon>lock</md-icon>LOGIN

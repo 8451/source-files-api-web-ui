@@ -13,11 +13,16 @@ export class AppComponent {
   activeLinkIndex = 0;
 
   constructor(private router: Router,
-              public authService: AuthService) {
+    public authService: AuthService) {
     this.routeLinks = [
       { label: 'Profile', link: 'profile' },
       { label: 'Terms', link: 'terms' },
       { label: 'Registration', link: 'registration' }
     ];
+  }
+
+  redirectToProfile() {
+    console.log('redirect');
+    this.router.navigate(['/profile']);
   }
 }
