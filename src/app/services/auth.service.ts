@@ -23,7 +23,7 @@ export class AuthService {
 
   register(): void {
     // navigate to login/authorization entity to register
-    window.location.href = environment.githubAuthorizationUrl;
+     window.location.href = environment.githubAuthorizationUrl;
   }
 
   logOut(): void {

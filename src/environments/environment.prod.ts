@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  githubAuthorizationUrl: '' // TODO: get url for github login
 };

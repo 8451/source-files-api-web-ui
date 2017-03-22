@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -11,13 +12,12 @@ export class AppComponent {
   routeLinks: any[];
   activeLinkIndex = 0;
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              public authService: AuthService) {
     this.routeLinks = [
       { label: 'Profile', link: 'profile' },
       { label: 'Terms', link: 'terms' },
       { label: 'Registration', link: 'registration' }
     ];
-
-    this.activeLinkIndex = this.routeLinks.indexOf(this.routeLinks.find(tab => router.url.indexOf(tab.link) !== -1));
   }
 }
