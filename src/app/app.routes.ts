@@ -2,8 +2,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 // guards
 import { AuthGuard } from './auth.guard';
