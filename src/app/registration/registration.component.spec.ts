@@ -3,7 +3,6 @@ import { MaterialModule } from '@angular/material';
 import { RegistrationComponent } from './registration.component';
 import { SourceWebService } from '../services/source-web.service';
 import { AuthService } from '../services/auth.service';
-import { Config } from '../config';
 import { Router, RouterLink } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 
@@ -37,7 +36,6 @@ describe('RegistrationComponent', () => {
       providers: [
         SourceWebService,
         AuthService,
-        Config,
         {
           provide: Router,
           useValue: mockRouter

@@ -3,7 +3,6 @@ import { Http, Request, Response, ResponseOptions, RequestOptionsArgs,
   ConnectionBackend, BaseRequestOptions, RequestOptions } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 import { SourceWebService } from './source-web.service';
-import { Config } from '../config';
 
 describe('SourceWebService', () => {
   beforeEach(() => {
@@ -15,7 +14,6 @@ describe('SourceWebService', () => {
             return new Http(backend, defaultOptions);
           }, deps: [MockBackend, BaseRequestOptions]
         },
-        Config,
         MockBackend,
         BaseRequestOptions,
         SourceWebService

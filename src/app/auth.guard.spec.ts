@@ -4,7 +4,6 @@ import { AuthGuard } from './auth.guard';
 import { Http, Request, Response, ResponseOptions, RequestOptionsArgs,
   ConnectionBackend, BaseRequestOptions, RequestOptions } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
-import { Config } from './config';
 import { Router, RouterLink } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 
@@ -26,7 +25,6 @@ describe('AuthGuard', () => {
           provide: Router,
           useValue: mockRouter
         },
-        Config,
         MockBackend,
         BaseRequestOptions
       ]
