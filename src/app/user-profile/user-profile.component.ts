@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MdDialog, MdDialogRef } from '@angular/material';
 import { SourceWebService } from '../services/source-web.service';
+import { Observable } from 'rxjs/';
 import { environment } from '../../environments/environment';
 
 @Component({
@@ -12,7 +14,8 @@ export class UserProfileComponent implements OnInit {
   public apiKeys = [];
   public addAnotherAPIKey = false;
 
-  constructor(public service: SourceWebService) {
+  constructor(public service: SourceWebService,
+              public dialog: MdDialog) {
   }
 
   ngOnInit() {
@@ -22,9 +25,9 @@ export class UserProfileComponent implements OnInit {
   private loadAPIKeys() {
     // load the API keys for this user
     this.apiKeys = [
-      { name: 'APIKey1' },
-      { name: 'APIKey2' },
-      { name: 'APIKey3' }
+      { application: 'Kick Butt Grocery App', key: '56857cfc709d3996f057252c16e' },
+      { application: 'I <3 Customer', key: '56857cfc709d3996f057252c16e' },
+      { application: 'Where is the bread?', key: '56857cfc709d3996f057252c16e' }
     ];
 
     this.service.getAPIKeys().subscribe(
@@ -52,18 +55,30 @@ export class UserProfileComponent implements OnInit {
 
   addAPIKey() {
     console.log('call add api key');
+    this.apiKeys.push({ application: 'Temp app', key: '56857cfc709d3996f057252c16e' });
 
-    this.service.addAPIKey().subscribe(
-      response => {
-        console.log('got add api key response');
-        this.loadAPIKeys();
-      },
-      error => 'ERROR: ' + <any>error
-    );
+    // this.service.addAPIKey().subscribe(
+    //   response => {
+    //     console.log('got add api key response');
+    //     this.loadAPIKeys();
+    //   },
+    //   error => 'ERROR: ' + <any>error
+    // );
   }
 
   deleteAccount() {
-    console.log('call delete account');
+    const dialogRef = this.dialog.open(DeleteDialogResultComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('call delete account');
+    });
   }
 
+}
+
+@Component({
+  selector: 'app-delete-dialog-result',
+  templateUrl: './delete-dialog-result.component.html'
+})
+export class DeleteDialogResultComponent {
+  constructor(public dialogRef: MdDialogRef<DeleteDialogResultComponent>) { }
 }

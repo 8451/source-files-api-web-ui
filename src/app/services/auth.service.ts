@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-
 import { Router } from '@angular/router';
-
+import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-
 import { environment } from '../../environments/environment';
 
 @Injectable()
@@ -18,7 +15,10 @@ export class AuthService {
   ) { }
 
   login(): void {
-    this.http.get(environment.userAuthUrl).subscribe(this.router.navigate['/profile'], (error) => { console.log(error); });
+    this.http.get(environment.userAuthUrl).subscribe(
+                                          (next) => { this.isLoggedIn = true; },
+                                          (error) => { console.log(error); },
+                                          () => { this.router.navigate(['/profile']); });
   }
 
   register(): void {
