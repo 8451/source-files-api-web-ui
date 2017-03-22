@@ -32,7 +32,51 @@ var environment = {
 
 /***/ }),
 
-/***/ 294:
+/***/ 471:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__(713);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegistrationComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var RegistrationComponent = (function () {
+    function RegistrationComponent(authService) {
+        this.authService = authService;
+        this.checkboxTruthy = false;
+        this.userLoggedIn = false;
+    }
+    //
+    RegistrationComponent.prototype.ngOnInit = function () {
+        // check local storage for a little somethin somethin
+        // this.userLoggedIn = Boolean(localStorage.getItem('userLoggedIn') || false);
+    };
+    RegistrationComponent = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
+            selector: 'app-registration',
+            template: __webpack_require__(833),
+            styles: [__webpack_require__(828)]
+        }), 
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === 'function' && _a) || Object])
+    ], RegistrationComponent);
+    return RegistrationComponent;
+    var _a;
+}());
+//# sourceMappingURL=/Users/h428219/source/java/source-files-api-web-ui/src/registration.component.js.map
+
+/***/ }),
+
+/***/ 472:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -98,63 +142,6 @@ var SourceWebService = (function () {
 
 /***/ }),
 
-/***/ 472:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_source_web_service__ = __webpack_require__(294);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__(713);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegistrationComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var RegistrationComponent = (function () {
-    function RegistrationComponent(sourceWebService, authService) {
-        this.sourceWebService = sourceWebService;
-        this.authService = authService;
-        this.checkboxTruthy = false;
-        this.userLoggedIn = false;
-    }
-    RegistrationComponent.prototype.ngOnInit = function () {
-        // check local storage for a little somethin somethin
-        this.userLoggedIn = Boolean(localStorage.getItem('userLoggedIn') || false);
-    };
-    RegistrationComponent.prototype.toggleCheckbox = function () {
-        this.checkboxTruthy = !this.checkboxTruthy;
-    };
-    RegistrationComponent.prototype.register = function () {
-        this.authService.register();
-    };
-    RegistrationComponent.prototype.login = function () {
-        if (this.authService.isLoggedIn) {
-            this.authService.login();
-        }
-    };
-    RegistrationComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
-            selector: 'app-registration',
-            template: __webpack_require__(833),
-            styles: [__webpack_require__(828)]
-        }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_source_web_service__["a" /* SourceWebService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__services_source_web_service__["a" /* SourceWebService */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */]) === 'function' && _b) || Object])
-    ], RegistrationComponent);
-    return RegistrationComponent;
-    var _a, _b;
-}());
-//# sourceMappingURL=/Users/h428219/source/java/source-files-api-web-ui/src/registration.component.js.map
-
-/***/ }),
-
 /***/ 473:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -195,7 +182,7 @@ var TermsAndConditionsComponent = (function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_source_web_service__ = __webpack_require__(294);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_source_web_service__ = __webpack_require__(472);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(196);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserProfileComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -363,8 +350,8 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_component__ = __webpack_require__(710);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__terms_and_conditions_terms_and_conditions_component__ = __webpack_require__(473);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__user_profile_user_profile_component__ = __webpack_require__(474);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_source_web_service__ = __webpack_require__(294);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__registration_registration_component__ = __webpack_require__(472);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_source_web_service__ = __webpack_require__(472);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__registration_registration_component__ = __webpack_require__(471);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -425,7 +412,7 @@ var AppModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__(194);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__terms_and_conditions_terms_and_conditions_component__ = __webpack_require__(473);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_profile_user_profile_component__ = __webpack_require__(474);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__registration_registration_component__ = __webpack_require__(472);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__registration_registration_component__ = __webpack_require__(471);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ROUTES; });
 /* unused harmony export routing */
 
@@ -575,7 +562,7 @@ module.exports = "<div class=\"widgets-row\"\n fxLayout\n fxLayout.xs=\"column\"
 /***/ 833:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"register-card\">\n  <md-card>\n    <md-card-header>\n      <md-card-title><h1>84.51&deg; Developer</h1></md-card-title>\n    </md-card-header>\n    <md-card-content>\n      <p>\n        Welcome to the 84.51&deg; Developer Console.  To begin to use our API's in\n        your application you must first view and accept our Terms and Conditions below.\n      </p>\n    </md-card-content>\n    <md-card-actions>\n      <md-checkbox\n      [checked]=\"checkboxTruthy\"\n      (change)=\"toggleCheckbox()\">I accept the <a href=\"/#/terms\" target=\"_blank\">Terms and Conditions</a></md-checkbox>\n      <button md-raised-button color=\"primary\" (click)=\"register()\" [disabled]=\"!checkboxTruthy\">REGISTER</button>\n    </md-card-actions>\n  </md-card>\n</div>\n"
+module.exports = "<div layout=\"row\" layout-padding layout-margin layout-fill style=\"min-height: 224px;\">\n\n    <div class=\"flex-item\" fxFlex=\"5%\" fxFlex.xs=\"10%\">  </div>\n    Registration works\n\n</div>\n<!-- <div class=\"register-card\">\n  <md-card>\n    <md-card-header>\n      <md-card-title><h1>84.51&deg; Developer</h1></md-card-title>\n    </md-card-header>\n    <md-card-content>\n      <p>\n        Welcome to the 84.51&deg; Developer Console.  To begin to use our API's in\n        your application you must first view and accept our Terms and Conditions below.\n      </p>\n    </md-card-content>\n    <md-card-actions>\n      <md-checkbox\n      [checked]=\"checkboxTruthy\"\n      (change)=\"toggleCheckbox()\">I accept the <a href=\"/#/terms\" target=\"_blank\">Terms and Conditions</a></md-checkbox>\n      <button md-raised-button color=\"primary\" (click)=\"register()\" [disabled]=\"!checkboxTruthy\">REGISTER</button>\n    </md-card-actions>\n  </md-card>\n</div> -->\n"
 
 /***/ }),
 
