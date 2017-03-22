@@ -9,16 +9,9 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
   title = 'Source Files API Web';
-  routeLinks: any[];
-  activeLinkIndex = 0;
 
   constructor(private router: Router,
     public authService: AuthService) {
-    this.routeLinks = [
-      { label: 'Profile', link: 'profile' },
-      { label: 'Terms', link: 'terms' },
-      { label: 'Registration', link: 'registration' }
-    ];
   }
 
   redirectToProfile() {
