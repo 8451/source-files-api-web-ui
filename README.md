@@ -1,3 +1,4 @@
+Java Status: [![Build Status](https://travis-ci.org/8451/source-files-api-web-ui.svg?branch=develop)](https://travis-ci.org/8451/source-files-api-web-ui)
 [![Stories in Ready](https://badge.waffle.io/8451/source-files-api-web-ui.png?label=ready&title=Ready)](http://waffle.io/8451/source-files-api-web-ui)
 
 # source-files-api-web-ui
