@@ -3,7 +3,7 @@ webpackJsonp([1,4],{
 /***/ 1089:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(538);
+module.exports = __webpack_require__(539);
 
 
 /***/ }),
@@ -37,7 +37,7 @@ var environment = {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__(713);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__(472);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegistrationComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -59,7 +59,18 @@ var RegistrationComponent = (function () {
     //
     RegistrationComponent.prototype.ngOnInit = function () {
         // check local storage for a little somethin somethin
-        // this.userLoggedIn = Boolean(localStorage.getItem('userLoggedIn') || false);
+        this.userLoggedIn = Boolean(localStorage.getItem('userLoggedIn') || false);
+    };
+    RegistrationComponent.prototype.toggleCheckbox = function () {
+        this.checkboxTruthy = !this.checkboxTruthy;
+    };
+    RegistrationComponent.prototype.register = function () {
+        this.authService.register();
+    };
+    RegistrationComponent.prototype.login = function () {
+        if (this.authService.isLoggedIn) {
+            this.authService.login();
+        }
     };
     RegistrationComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
@@ -77,6 +88,57 @@ var RegistrationComponent = (function () {
 /***/ }),
 
 /***/ 472:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(130);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(194);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(196);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var AuthService = (function () {
+    function AuthService(http, router) {
+        this.http = http;
+        this.router = router;
+        this.isLoggedIn = false;
+    }
+    AuthService.prototype.login = function () {
+        this.http.get(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].userAuthUrl).subscribe(this.router.navigate['/profile'], function (error) { console.log(error); });
+    };
+    AuthService.prototype.register = function () {
+        // navigate to login/authorization entity to register
+        window.location.href = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].githubAuthorizationUrl;
+    };
+    AuthService.prototype.logOut = function () {
+        localStorage.removeItem('userLoggedIn');
+        this.isLoggedIn = false;
+        this.router.navigate(['/']);
+    };
+    AuthService = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(), 
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === 'function' && _b) || Object])
+    ], AuthService);
+    return AuthService;
+    var _a, _b;
+}());
+//# sourceMappingURL=/Users/h428219/source/java/source-files-api-web-ui/src/auth.service.js.map
+
+/***/ }),
+
+/***/ 473:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -142,7 +204,7 @@ var SourceWebService = (function () {
 
 /***/ }),
 
-/***/ 473:
+/***/ 474:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -177,12 +239,12 @@ var TermsAndConditionsComponent = (function () {
 
 /***/ }),
 
-/***/ 474:
+/***/ 475:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_source_web_service__ = __webpack_require__(472);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_source_web_service__ = __webpack_require__(473);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(196);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserProfileComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -255,7 +317,7 @@ var UserProfileComponent = (function () {
 
 /***/ }),
 
-/***/ 537:
+/***/ 538:
 /***/ (function(module, exports) {
 
 function webpackEmptyContext(req) {
@@ -264,19 +326,19 @@ function webpackEmptyContext(req) {
 webpackEmptyContext.keys = function() { return []; };
 webpackEmptyContext.resolve = webpackEmptyContext;
 module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 537;
+webpackEmptyContext.id = 538;
 
 
 /***/ }),
 
-/***/ 538:
+/***/ 539:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(680);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(711);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(681);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(712);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(196);
 
 
@@ -290,7 +352,7 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dyna
 
 /***/ }),
 
-/***/ 710:
+/***/ 711:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -316,7 +378,7 @@ var AppComponent = (function () {
         this.routeLinks = [
             { label: 'Profile', link: 'profile' },
             { label: 'Terms', link: 'terms' },
-            { path: 'Registration', component: 'registration' }
+            { label: 'Registration', link: 'registration' }
         ];
         this.activeLinkIndex = this.routeLinks.indexOf(this.routeLinks.find(function (tab) { return router.url.indexOf(tab.link) !== -1; }));
     }
@@ -335,7 +397,7 @@ var AppComponent = (function () {
 
 /***/ }),
 
-/***/ 711:
+/***/ 712:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -343,15 +405,16 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(130);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_material__ = __webpack_require__(664);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_material__ = __webpack_require__(665);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__(194);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_routes__ = __webpack_require__(712);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_flex_layout__ = __webpack_require__(628);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_component__ = __webpack_require__(710);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__terms_and_conditions_terms_and_conditions_component__ = __webpack_require__(473);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__user_profile_user_profile_component__ = __webpack_require__(474);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_source_web_service__ = __webpack_require__(472);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__registration_registration_component__ = __webpack_require__(471);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_routes__ = __webpack_require__(713);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_flex_layout__ = __webpack_require__(629);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_component__ = __webpack_require__(711);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__terms_and_conditions_terms_and_conditions_component__ = __webpack_require__(474);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__user_profile_user_profile_component__ = __webpack_require__(475);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__services_source_web_service__ = __webpack_require__(473);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__services_auth_service__ = __webpack_require__(472);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__registration_registration_component__ = __webpack_require__(471);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -375,6 +438,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var AppModule = (function () {
     function AppModule() {
     }
@@ -384,7 +448,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */],
                 __WEBPACK_IMPORTED_MODULE_9__terms_and_conditions_terms_and_conditions_component__["a" /* TermsAndConditionsComponent */],
                 __WEBPACK_IMPORTED_MODULE_10__user_profile_user_profile_component__["a" /* UserProfileComponent */],
-                __WEBPACK_IMPORTED_MODULE_12__registration_registration_component__["a" /* RegistrationComponent */]
+                __WEBPACK_IMPORTED_MODULE_13__registration_registration_component__["a" /* RegistrationComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -394,7 +458,10 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_4__angular_material__["a" /* MaterialModule */].forRoot(),
                 __WEBPACK_IMPORTED_MODULE_5__angular_router__["a" /* RouterModule */].forRoot(__WEBPACK_IMPORTED_MODULE_6__app_routes__["a" /* ROUTES */], { useHash: true })
             ],
-            providers: [__WEBPACK_IMPORTED_MODULE_11__services_source_web_service__["a" /* SourceWebService */]],
+            providers: [
+                __WEBPACK_IMPORTED_MODULE_11__services_source_web_service__["a" /* SourceWebService */],
+                __WEBPACK_IMPORTED_MODULE_12__services_auth_service__["a" /* AuthService */]
+            ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */]]
         }), 
         __metadata('design:paramtypes', [])
@@ -405,13 +472,13 @@ var AppModule = (function () {
 
 /***/ }),
 
-/***/ 712:
+/***/ 713:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__(194);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__terms_and_conditions_terms_and_conditions_component__ = __webpack_require__(473);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_profile_user_profile_component__ = __webpack_require__(474);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__terms_and_conditions_terms_and_conditions_component__ = __webpack_require__(474);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_profile_user_profile_component__ = __webpack_require__(475);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__registration_registration_component__ = __webpack_require__(471);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ROUTES; });
 /* unused harmony export routing */
@@ -426,57 +493,6 @@ var ROUTES = [
 ];
 var routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["a" /* RouterModule */].forRoot(ROUTES);
 //# sourceMappingURL=/Users/h428219/source/java/source-files-api-web-ui/src/app.routes.js.map
-
-/***/ }),
-
-/***/ 713:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(130);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(194);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(196);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthService; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-var AuthService = (function () {
-    function AuthService(http, router) {
-        this.http = http;
-        this.router = router;
-        this.isLoggedIn = false;
-    }
-    AuthService.prototype.login = function () {
-        this.http.get(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].userAuthUrl).subscribe(this.router.navigate['/profile'], function (error) { console.log(error); });
-    };
-    AuthService.prototype.register = function () {
-        // navigate to login/authorization entity to register
-        window.location.href = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].githubAuthorizationUrl;
-    };
-    AuthService.prototype.logOut = function () {
-        localStorage.removeItem('userLoggedIn');
-        this.isLoggedIn = false;
-        this.router.navigate(['/']);
-    };
-    AuthService = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === 'function' && _b) || Object])
-    ], AuthService);
-    return AuthService;
-    var _a, _b;
-}());
-//# sourceMappingURL=/Users/h428219/source/java/source-files-api-web-ui/src/auth.service.js.map
 
 /***/ }),
 
@@ -562,7 +578,7 @@ module.exports = "<div class=\"widgets-row\"\n fxLayout\n fxLayout.xs=\"column\"
 /***/ 833:
 /***/ (function(module, exports) {
 
-module.exports = "<div layout=\"row\" layout-padding layout-margin layout-fill style=\"min-height: 224px;\">\n\n    <div class=\"flex-item\" fxFlex=\"5%\" fxFlex.xs=\"10%\">  </div>\n    Registration works\n\n</div>\n<!-- <div class=\"register-card\">\n  <md-card>\n    <md-card-header>\n      <md-card-title><h1>84.51&deg; Developer</h1></md-card-title>\n    </md-card-header>\n    <md-card-content>\n      <p>\n        Welcome to the 84.51&deg; Developer Console.  To begin to use our API's in\n        your application you must first view and accept our Terms and Conditions below.\n      </p>\n    </md-card-content>\n    <md-card-actions>\n      <md-checkbox\n      [checked]=\"checkboxTruthy\"\n      (change)=\"toggleCheckbox()\">I accept the <a href=\"/#/terms\" target=\"_blank\">Terms and Conditions</a></md-checkbox>\n      <button md-raised-button color=\"primary\" (click)=\"register()\" [disabled]=\"!checkboxTruthy\">REGISTER</button>\n    </md-card-actions>\n  </md-card>\n</div> -->\n"
+module.exports = "<div layout=\"row\" layout-padding layout-margin layout-fill style=\"min-height: 224px;\">\n\n    <div class=\"flex-item\" fxFlex=\"5%\" fxFlex.xs=\"10%\">  </div>\n    <div class=\"register-card\">\n      <md-card>\n        <md-card-header>\n          <md-card-title><h1>84.51&deg; Developer</h1></md-card-title>\n        </md-card-header>\n        <md-card-content>\n          <p>\n            Welcome to the 84.51&deg; Developer Console.  To begin to use our API's in\n            your application you must first view and accept our Terms and Conditions below.\n          </p>\n        </md-card-content>\n        <md-card-actions>\n          <md-checkbox\n          [checked]=\"checkboxTruthy\"\n          (change)=\"toggleCheckbox()\">I accept the <a href=\"/#/terms\" target=\"_blank\">Terms and Conditions</a></md-checkbox>\n          <button md-raised-button color=\"primary\" (click)=\"register()\" [disabled]=\"!checkboxTruthy\">REGISTER</button>\n        </md-card-actions>\n      </md-card>\n    </div>\n\n\n</div>\n"
 
 /***/ }),
 

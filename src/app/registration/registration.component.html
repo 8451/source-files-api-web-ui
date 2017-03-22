@@ -1,25 +1,25 @@
 <div layout="row" layout-padding layout-margin layout-fill style="min-height: 224px;">
 
     <div class="flex-item" fxFlex="5%" fxFlex.xs="10%">  </div>
-    Registration works
+    <div class="register-card">
+      <md-card>
+        <md-card-header>
+          <md-card-title><h1>84.51&deg; Developer</h1></md-card-title>
+        </md-card-header>
+        <md-card-content>
+          <p>
+            Welcome to the 84.51&deg; Developer Console.  To begin to use our API's in
+            your application you must first view and accept our Terms and Conditions below.
+          </p>
+        </md-card-content>
+        <md-card-actions>
+          <md-checkbox
+          [checked]="checkboxTruthy"
+          (change)="toggleCheckbox()">I accept the <a href="/#/terms" target="_blank">Terms and Conditions</a></md-checkbox>
+          <button md-raised-button color="primary" (click)="register()" [disabled]="!checkboxTruthy">REGISTER</button>
+        </md-card-actions>
+      </md-card>
+    </div>
+
 
 </div>
-<!-- <div class="register-card">
-  <md-card>
-    <md-card-header>
-      <md-card-title><h1>84.51&deg; Developer</h1></md-card-title>
-    </md-card-header>
-    <md-card-content>
-      <p>
-        Welcome to the 84.51&deg; Developer Console.  To begin to use our API's in
-        your application you must first view and accept our Terms and Conditions below.
-      </p>
-    </md-card-content>
-    <md-card-actions>
-      <md-checkbox
-      [checked]="checkboxTruthy"
-      (change)="toggleCheckbox()">I accept the <a href="/#/terms" target="_blank">Terms and Conditions</a></md-checkbox>
-      <button md-raised-button color="primary" (click)="register()" [disabled]="!checkboxTruthy">REGISTER</button>
-    </md-card-actions>
-  </md-card>
-</div> -->
