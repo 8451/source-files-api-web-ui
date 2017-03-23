@@ -1,58 +1,19 @@
-<!-- <div layout="row" layout-padding layout-margin layout-fill style="min-height: 224px;">
-  <div class="flex-item" fxFlex="5%" fxFlex.xs="10%">  </div>
-    <div flex>
-      <md-card>
-        <div layout="row" >
-          <div flex>
-              <button md-button md-tooltip="Add New API Key" (click)="addAPIKey()" [disabled]="!addAnotherAPIKey">
-                <md-icon class="button-add-key" class="green">add</md-icon>ADD API KEY
-              </button>
-          </div>
-          <div flex>
-            <h3>API Data Keys for {{githubUserId}}</h3>
-          </div>
-        </div>
-        <div>
-        </div>
-        <table *ngFor="let apiKey of apiKeys" >
-          <tr>
-            <td width="20%">{{ apiKey.name }}</td>
-            <td width="80%"><button md-button md-tooltip="Delete this API Key" (click)="deleteAPIKey(apiKey)" ><md-icon class="red">delete</md-icon>DELETE</button></td>
-          </tr>
-        </table>
-      </md-card>
-      <button md-fab class="button-add-key"><md-icon>add</md-icon></button>
-
-      <p>
-      </p> -->
-      <!--
-      <div class="api-card">
-        <md-card *ngFor="let key of apiKeys">
-          <md-card-content>
-            <p>Application: {{key.application}}</p>
-            <p>API key: {{key.key}}</p>
-          </md-card-content>
-          <md-card-actions>
-            <button md-button (click)="deleteAPIKey(key)"><md-icon>delete</md-icon>Delete</button>
-          </md-card-actions>
-        </md-card>
-      </div>
-
-
-    -->
-
-<!-- fixed - taylor -->
+<div class="flex-item" fxFlex="5%" fxFlex.xs="10%">
+    <button md-button md-fab class="button-add-key"
+     md-tooltip="Add New Application Key" (click)="addAPIKey()" [disabled]="!addAnotherAPIKey">
+     <md-icon>add</md-icon></button>
+</div>
 <div class="api-key-container">
   <md-list>
     <h2>Applications</h2>
+
     <md-list-item *ngFor="let key of apiKeys">
       <md-icon md-list-avatar>vpn_key</md-icon>
       <h3 md-line>Application: {{key.application}}</h3>
       <p md-line>Key: {{key.key}}
-      <button md-button class="button-delete-key" (click)="deleteAPIKey(key)"><md-icon>delete</md-icon>Delete</button></p>
+      <button md-button class="button-delete-key" (click)="deleteAPIKey(key)"><md-icon class="red">delete</md-icon>Delete</button></p>
     </md-list-item>
   </md-list>
-  <button md-fab class="button-add-key" (click)="addAPIKey()"><md-icon>add</md-icon></button>
 </div>
 <div>
   <div class="account-delete-heading">

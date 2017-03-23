@@ -6,9 +6,10 @@
 }
 
 .button-add-key {
-  position: absolute;
-  right: 20px;
-  bottom: 10px;
+  float: relative;
+  top: 60px;
+  left: 150px;
+  z-index: 500;
 }
 
 .button-delete-key {
