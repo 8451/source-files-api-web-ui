@@ -17,6 +17,7 @@ import { AuthService } from './services/auth.service';
 
 import { AuthGuard } from './auth.guard';
 import {} from 'jasmine';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {} from 'jasmine';
     TermsAndConditionsComponent,
     RegistrationComponent,
     UserProfileComponent,
-    DeleteDialogResultComponent
+    DeleteDialogResultComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
