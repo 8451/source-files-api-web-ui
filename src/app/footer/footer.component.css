@@ -1,0 +1,11 @@
+a, a:hover, a:active, a:visited, a:focus {
+    text-decoration:none;
+    color: white;
+}
+
+.footer {
+  position: fixed;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}

@@ -1,9 +1,27 @@
-<div layout="row" layout-padding layout-margin layout-fill style="min-height: 224px;">
-    <div flex>
+<div class="flex-item" fxFlex="5%" fxFlex.xs="10%">
+    <button md-button md-fab class="button-add-key"
+     md-tooltip="Add New Application Key" (click)="addAPIKey()" [disabled]="!addAnotherAPIKey">
+     <md-icon>add</md-icon></button>
+</div>
+<div class="api-key-container">
+  <md-list>
+    <h2>Applications</h2>
 
-      <h1 class="md-display-3">User Profile Works</h1>
-      <p>
-        THIS 84.51° SOURCE FILES SITE (THE “SITE”) IS OPERATED BY 84.51° LIMITED OR ONE OF 84.51° LIMITED’S WHOLLY OWNED SUBSIDIARIES OR JOINT VENTURE COMPANIES THAT ARE LOCATED IN YOUR MARKET (TOGETHER THE “84.51° GROUP”). THIS IS A LEGAL AGREEMENT BETWEEN YOU AND 84.51° LIMITED STATING THE TERMS THAT GOVERN YOUR USE OF THE SITE AND ANY DATA FILES (“SOURCE FILES”) PROVIDED BY A MEMBER OF THE 84.51° GROUP ON THE SITE. PLEASE READ THIS AGREEMENT BEFORE PRESSING THE "AGREE" BUTTON AND CHECKING THE BOX AT THE BOTTOM OF THIS PAGE. BY PRESSING "AGREE," YOU ARE AGREEING TO BE BOUND BY THE TERMS OF THIS AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF THIS AGREEMENT, PRESS "CANCEL" AND YOU WILL BE UNABLE TO ACCESS THE DATA.
-      </p>
-    </div>
+    <md-list-item *ngFor="let key of apiKeys">
+      <md-icon md-list-avatar>vpn_key</md-icon>
+      <h3 md-line>Application: {{key.application}}</h3>
+      <p md-line>Key: {{key.key}}
+      <button md-button class="button-delete-key" (click)="deleteAPIKey(key)"><md-icon class="red">delete</md-icon>Delete</button></p>
+    </md-list-item>
+  </md-list>
+</div>
+<div>
+  <div class="account-delete-heading">
+    <h2>Delete account</h2>
+  </div>
+  <p>Once you delete your account, there is no going back.  We will delete all of your api keys generated and remove your account from our systems.
+    After this, you will no longer be allowed to hit our api's until you accept
+    our <a href="/#/terms" target="_blank">Terms and Conditions</a> and register again.
+  </p>
+  <button md-raised-button class="button-account-delete" (click)="deleteAccount()"><md-icon>delete_forever</md-icon>Delete your account</button>
 </div>

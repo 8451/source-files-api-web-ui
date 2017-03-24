@@ -1,3 +1,4 @@
+Java Status: [![Build Status](https://travis-ci.org/8451/source-files-api-web-ui.svg?branch=develop)](https://travis-ci.org/8451/source-files-api-web-ui)
 [![Stories in Ready](https://badge.waffle.io/8451/source-files-api-web-ui.png?label=ready&title=Ready)](http://waffle.io/8451/source-files-api-web-ui)
 
 # source-files-api-web-ui
@@ -11,7 +12,14 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Running unit tests
 
+Run `ng test --browser` to execute unit tests via [Karma](https://karma-runner.github.io).
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `ng test -sr` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+
+Run `ng test -sr` to execute the unit tests in a single run via [Karma](https://karma-runner.github.io).
+
+Run `ng test -sr` to execute the unit tests in a single run via [Karma](https://karma-runner.github.io).
 
 ## Running end-to-end tests
 

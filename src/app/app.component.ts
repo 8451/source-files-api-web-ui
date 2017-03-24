@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
+import { FooterComponent } from './footer/footer.component';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +10,13 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'Source Files API Web';
-  routeLinks: any[];
-  activeLinkIndex = 0;
 
-  constructor(private router: Router) {
-    this.routeLinks = [
-      // { label: 'Profile', link: 'profile' },
-      { label: 'Terms', link: 'terms' }
-    ];
+  constructor(private router: Router,
+    public authService: AuthService) {
+  }
+
+  redirectToProfile() {
+    console.log('redirect');
+    this.router.navigate(['/profile']);
   }
 }
