@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,5 +49,21 @@ public class UserController {
     }
 
     return apiUser;
+  }
+
+  @RequestMapping(path = "/user", method = RequestMethod.POST)
+  public void saveUser(@RequestBody ApiUser apiUser) {
+    apiUserService.saveApiUser(apiUser);
+  }
+
+  @RequestMapping(path = "/user", method = RequestMethod.PUT)
+  public void updateUser(@RequestBody ApiUser apiUser) {
+    apiUserService.saveApiUser(apiUser);
+  }
+
+  @RequestMapping(path = "/user", method = RequestMethod.DELETE)
+  public void deleteUser(Principal principal) {
+    ApiUser apiUser = user(principal);
+    apiUserService.deleteApiUser(apiUser);
   }
 }

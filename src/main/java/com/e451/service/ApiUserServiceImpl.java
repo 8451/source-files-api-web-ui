@@ -49,7 +49,7 @@ public class ApiUserServiceImpl implements ApiUserService{
 
   @Override
   public void deleteApiUser(ApiUser apiUser) {
-    UserRecord userRecord = apiUserUserRecordConverter.convert(apiUser);
+    UserRecord userRecord = apiUserRepository.findUserRecordByUsername(apiUser.getUsername());
     apiUserRepository.delete(userRecord);
   }
 }

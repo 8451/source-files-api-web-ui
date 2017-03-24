@@ -11,7 +11,7 @@ public class UserRecord {
 
   @Id
   @GeneratedValue(strategy= GenerationType.AUTO)
-  private String id;
+  private Long id;
   private String name;
   private String username;
   private boolean hasAcceptedTerms = false;
@@ -23,11 +23,11 @@ public class UserRecord {
     this.hasAcceptedTerms = hasAcceptedTerms;
   }
 
-  public String getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
