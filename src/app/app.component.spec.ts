@@ -4,6 +4,7 @@ import { Router, RouterLink } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MaterialModule } from '@angular/material';
 import { AuthService } from './services/auth.service';
+import { FooterComponent } from './footer/footer.component';
 
 describe('AppComponent', () => {
 
@@ -13,7 +14,8 @@ describe('AppComponent', () => {
 
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        FooterComponent
       ],
       imports: [
         RouterTestingModule,
