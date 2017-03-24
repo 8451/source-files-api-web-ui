@@ -15,26 +15,25 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        // FooterComponent
+        FooterComponent
       ],
       imports: [
         RouterTestingModule,
         MaterialModule
       ],
-      // providers: [
-      //   {
-      //     provide: Router,
-      //     useValue: mockRouter
-      //   },
-      //   AuthService
-      // ]
+      providers: [
+        {
+          provide: Router,
+          useValue: mockRouter
+        },
+        AuthService
+      ]
     });
     TestBed.compileComponents();
   });
 
   it('should construct', async(inject(
-    //[Router, AuthService], (router, authService)
-    [], () => {
+    [Router, AuthService], (router, authService) => {
       const fixture = TestBed.createComponent(AppComponent);
       const app = fixture.debugElement.componentInstance;
 
