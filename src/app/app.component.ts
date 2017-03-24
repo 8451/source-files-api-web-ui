@@ -27,8 +27,8 @@ export class AppComponent implements AfterViewInit {
 
   }
 
-  redirectToProfile() {
+  redirectToRegister() {
     console.log('redirect');
-    this.router.navigate(['/profile']);
+    this.router.navigate(['/register']);
   }
 }

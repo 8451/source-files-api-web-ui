@@ -20,6 +20,7 @@ import { ApiKey } from './models/apiKey.model';
 import { AuthGuard } from './auth.guard';
 import {} from 'jasmine';
 import { FooterComponent } from './footer/footer.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { FooterComponent } from './footer/footer.component';
     RegistrationComponent,
     UserProfileComponent,
     DeleteDialogResultComponent,
-    FooterComponent
+    FooterComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

@@ -19,10 +19,10 @@ export class SourceWebService {
   }
 
   addAPIKey(appName: string): Observable<any> {
-    let apiKey = new ApiKey();
+    const apiKey = new ApiKey();
     apiKey.name = appName;
-    let headers = new Headers({'Content-Type': 'application/json' });
-    let options = new RequestOptions({headers: headers});
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
 
     return this.http.post(environment.ADD_API_URL
       , JSON.stringify(apiKey)
@@ -36,8 +36,8 @@ export class SourceWebService {
   }
 
   deleteAPIKey(apiKey): Observable<any> {
-    let headers = new Headers({'Content-Type': 'application/json' });
-    let options = new RequestOptions({headers: headers});
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
 
     return this.http.delete(`${environment.DELETE_API_URL}/${apiKey.key}`
       , options)
@@ -46,7 +46,6 @@ export class SourceWebService {
       })
       .catch((error: any) => Observable.throw(
         'Error deleting API Key'));
-
   }
 
   deleteAccount() {

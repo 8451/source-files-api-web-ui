@@ -1,11 +1,11 @@
 <div>
   <md-toolbar color="primary">
-    <img src="./assets/img/8451-logo.png" />
-    <h4> Source Files API</h4>
+  <img src="./assets/img/8451-logo.png" />
+  <a href="/#/about"><h4> Source Files API</h4></a>
     <span class="spacer"></span>
     <button md-button
           *ngIf="authService.isLoggedIn"
-          (click)="redirectToProfile()">
+          (click)="redirectToRegister()">
           <md-icon>account_circle</md-icon>{{username}}
     </button>
     <button md-button

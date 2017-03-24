@@ -5,15 +5,17 @@ import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-co
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AboutComponent } from './about/about.component';
 
 // guards
 import { AuthGuard } from './auth.guard';
 
 export const ROUTES: Routes = [
-  { path: '', redirectTo: 'register', pathMatch: 'full' },
+  { path: '', redirectTo: 'about', pathMatch: 'full' },
   { path: 'register', component: RegistrationComponent },
   { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard] },
-  { path: 'terms', component: TermsAndConditionsComponent }
+  { path: 'terms', component: TermsAndConditionsComponent },
+  { path: 'about', component: AboutComponent }
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(ROUTES);
