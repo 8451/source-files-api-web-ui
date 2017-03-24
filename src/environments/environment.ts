@@ -7,6 +7,7 @@ export const environment = {
   production: false,
   githubAuthorizationUrl: 'http://localhost:8080/login', // for testing locally
   userAuthUrl: '/user',
+  loginUrl: '/login',
   authorizationRedirectUrl: '/profile',
   GET_API_KEYS_URL: '',
   ADD_API_URL: '',

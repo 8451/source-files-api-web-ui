@@ -21,7 +21,7 @@ export class AuthService {
         this.isLoggedIn = true;
         // set username once logged in
       },
-      (error) => { console.log(error); },
+      (error) => { window.location.href = environment.githubAuthorizationUrl; },
       () => { this.router.navigate(['/profile']); });
   }
 
