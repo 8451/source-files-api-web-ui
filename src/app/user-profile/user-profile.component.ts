@@ -15,7 +15,7 @@ export class UserProfileComponent implements OnInit {
   public addAnotherAPIKey = false;
 
   constructor(public service: SourceWebService,
-              public dialog: MdDialog) {
+    public dialog: MdDialog) {
   }
 
   ngOnInit() {
@@ -69,7 +69,15 @@ export class UserProfileComponent implements OnInit {
   deleteAccount() {
     const dialogRef = this.dialog.open(DeleteDialogResultComponent);
     dialogRef.afterClosed().subscribe(result => {
-      console.log('call delete account');
+      if (result === 'yes') {
+        console.log('deleted account', result);
+        this.service.deleteAccount().subscribe(
+          response => {
+            console.log('successfully deleted account');
+          },
+          error => 'ERROR: ' + <any>error
+        );
+      }
     });
   }
 
@@ -77,6 +85,7 @@ export class UserProfileComponent implements OnInit {
 
 @Component({
   selector: 'app-delete-dialog-result',
+  styleUrls: ['./delete-dialog-result.component.css'],
   templateUrl: './delete-dialog-result.component.html'
 })
 export class DeleteDialogResultComponent {

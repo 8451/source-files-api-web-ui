@@ -8,6 +8,7 @@ import { environment } from '../../environments/environment';
 export class AuthService {
 
   isLoggedIn = false;
+  username;
 
   constructor(
     private http: Http,
@@ -16,14 +17,17 @@ export class AuthService {
 
   login(): void {
     this.http.get(environment.userAuthUrl).subscribe(
-                                          (next) => { this.isLoggedIn = true; },
-                                          (error) => { console.log(error); },
-                                          () => { this.router.navigate(['/profile']); });
+      (next) => {
+        this.isLoggedIn = true;
+        // set username once logged in
+      },
+      (error) => { console.log(error); },
+      () => { this.router.navigate(['/profile']); });
   }
 
   register(): void {
     // navigate to login/authorization entity to register
-     window.location.href = environment.githubAuthorizationUrl;
+    window.location.href = environment.githubAuthorizationUrl;
   }
 
   logOut(): void {
