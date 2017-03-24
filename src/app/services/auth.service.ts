@@ -27,10 +27,9 @@ export class AuthService {
 
   userInfo(): Observable<any> {
     return this.http.get(environment.userAuthUrl)
-      .map((response: Response) => {
-        this.username = response.json().name;
-      })
-      .catch((error: any) => Observable.throw(
+      .map((response: Response) =>
+        response.json())
+      .catch((error: any) => Observable.throw(error.json().error ||
         'Error retrieving user info'));
   }
 
@@ -42,6 +41,10 @@ export class AuthService {
   logOut(): void {
     localStorage.removeItem('userLoggedIn');
     this.isLoggedIn = false;
+    this.http.delete(environment.userAuthUrl).subscribe(
+      (response: Response) => {},
+      (error) => {error.json().error || 'Error deleting account'}
+    );
     this.router.navigate(['/']);
   }
 }

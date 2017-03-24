@@ -24,16 +24,10 @@ export class UserProfileComponent implements OnInit {
 
   private loadAPIKeys() {
     // load the API keys for this user
-    this.apiKeys = [
-      { application: 'Kick Butt Grocery App', key: '56857cfc709d3996f057252c16e' },
-      { application: 'I <3 Customer', key: '56857cfc709d3996f057252c16e' },
-      { application: 'Where is the bread?', key: '56857cfc709d3996f057252c16e' }
-    ];
-
     this.service.getAPIKeys().subscribe(
       response => {
         console.log('getting API keys', response);
-        this.apiKeys = response.keys;
+        this.apiKeys = response;
       },
       error => 'ERROR: ' + <any>error
     );
@@ -55,15 +49,13 @@ export class UserProfileComponent implements OnInit {
 
   addAPIKey() {
     console.log('call add api key');
-    this.apiKeys.push({ application: 'Temp app', key: '56857cfc709d3996f057252c16e' });
-
-    // this.service.addAPIKey().subscribe(
-    //   response => {
-    //     console.log('got add api key response');
-    //     this.loadAPIKeys();
-    //   },
-    //   error => 'ERROR: ' + <any>error
-    // );
+    this.service.addAPIKey("some name").subscribe(
+      response => {
+        console.log('got add api key response');
+        this.loadAPIKeys();
+      },
+      error => 'ERROR: ' + <any>error
+    );
   }
 
   deleteAccount() {

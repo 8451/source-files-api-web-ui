@@ -5,13 +5,13 @@
 
 export const environment = {
   production: false,
-  githubAuthorizationUrl: 'http://localhost:8080/login', // for testing locally
+  githubAuthorizationUrl: '/login', // for testing locally
   userAuthUrl: '/user',
   loginUrl: '/login',
   authorizationRedirectUrl: '/profile',
-  GET_API_KEYS_URL: '',
-  ADD_API_URL: '',
-  DELETE_API_URL: '',
-  DELETE_ACCOUNT_URL: '',
+  GET_API_KEYS_URL: '/apiKey',
+  ADD_API_URL: '/apiKey',
+  DELETE_API_URL: '/apiKey',
+  DELETE_ACCOUNT_URL: '/user',
   MAX_ALLOWED_API_KEYS: 5
 };

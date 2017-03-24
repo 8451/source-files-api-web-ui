@@ -20,7 +20,7 @@ export class AppComponent implements AfterViewInit {
     this.authService.userInfo().subscribe(
       response => {
         console.log('got add api key response');
-        this.username = response;
+        this.username = response.name;
       },
       error => 'ERROR retrieving user information: ' + <any>error
     );
