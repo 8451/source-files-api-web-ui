@@ -15,20 +15,41 @@ export class AuthService {
     private router: Router
   ) { }
 
+  // call this to attemp login
+  // login(): void {
+  //   this.http.get(environment.userAuthUrl)
+  //   .subscribe(
+  //     (next) => {
+  //       // if not logged in, will get a 200 response but blank body
+  //       if (next) {
+  //         this.isLoggedIn = true;
+  //         this.username = next;
+  //         // set username once logged in
+  //       }
+  //     },
+  //     (error) => { window.location.href = environment.githubAuthorizationUrl; },
+  //     () => { this.router.navigate(['/profile']); });
+  // }
+
   login(): void {
-    this.http.get(environment.userAuthUrl).subscribe(
-      (next) => {
-        this.isLoggedIn = true;
-        // set username once logged in
-      },
-      (error) => { window.location.href = environment.githubAuthorizationUrl; },
-      () => { this.router.navigate(['/profile']); });
+    this.http.get(environment.userAuthUrl)
+        .map(response => response.json())
+        .catch((error: any) => window.location.href = environment.githubAuthorizationUrl)
+        // .subscribe(result => this.result = result);
+        .subscribe(result => {
+        if (result) {
+          this.username = result;
+          this.isLoggedIn = true;
+          this.router.navigate(['/profile']);
+        }
+      })
   }
+
 
   userInfo(): Observable<any> {
     return this.http.get(environment.userAuthUrl)
       .map((response: Response) =>
-        response.json())
+        this.username = response.json().name)
       .catch((error: any) => Observable.throw(error.json().error ||
         'Error retrieving user info'));
   }
