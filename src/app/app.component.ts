@@ -10,6 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 })
 export class AppComponent {
   title = 'Source Files API Web';
+  username = 'PROFILE';
 
   constructor(private router: Router,
     public authService: AuthService) {
