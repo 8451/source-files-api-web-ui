@@ -25,6 +25,15 @@ export class AuthService {
       () => { this.router.navigate(['/profile']); });
   }
 
+  userInfo(): Observable<any> {
+    return this.http.get(environment.userAuthUrl)
+      .map((response: Response) => {
+        this.username = response.json().name;
+      })
+      .catch((error: any) => Observable.throw(
+        'Error retrieving user info'));
+  }
+
   register(): void {
     // navigate to login/authorization entity to register
     window.location.href = environment.githubAuthorizationUrl;

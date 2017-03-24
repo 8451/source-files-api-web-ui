@@ -15,7 +15,9 @@ module.exports = __webpack_require__(541);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(194);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(130);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__environments_environment__ = __webpack_require__(197);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -30,6 +32,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var AuthService = (function () {
     function AuthService(http, router) {
         this.http = http;
@@ -38,14 +41,22 @@ var AuthService = (function () {
     }
     AuthService.prototype.login = function () {
         var _this = this;
-        this.http.get(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].userAuthUrl).subscribe(function (next) {
+        this.http.get(__WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].userAuthUrl).subscribe(function (next) {
             _this.isLoggedIn = true;
             // set username once logged in
-        }, function (error) { window.location.href = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].githubAuthorizationUrl; }, function () { _this.router.navigate(['/profile']); });
+        }, function (error) { window.location.href = __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].githubAuthorizationUrl; }, function () { _this.router.navigate(['/profile']); });
+    };
+    AuthService.prototype.userInfo = function () {
+        var _this = this;
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].userAuthUrl)
+            .map(function (response) {
+            _this.username = response.json().name;
+        })
+            .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__["Observable"].throw('Error retrieving user info'); });
     };
     AuthService.prototype.register = function () {
         // navigate to login/authorization entity to register
-        window.location.href = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].githubAuthorizationUrl;
+        window.location.href = __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].githubAuthorizationUrl;
     };
     AuthService.prototype.logOut = function () {
         localStorage.removeItem('userLoggedIn');
@@ -459,6 +470,13 @@ var AppComponent = (function () {
         this.title = 'Source Files API Web';
         this.username = 'PROFILE';
     }
+    AppComponent.prototype.ngAfterViewInit = function () {
+        var _this = this;
+        this.authService.userInfo().subscribe(function (response) {
+            console.log('got add api key response');
+            _this.username = response;
+        }, function (error) { return 'ERROR retrieving user information: ' + error; });
+    };
     AppComponent.prototype.redirectToProfile = function () {
         console.log('redirect');
         this.router.navigate(['/profile']);
