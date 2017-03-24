@@ -3,11 +3,13 @@ package com.e451.domain;
 public class ApiUser {
   private String name;
   private String username;
+  private String hasAcceptedTerms = Boolean.FALSE.toString();
 
   public ApiUser(){}
-  public ApiUser(String name, String username) {
+  public ApiUser(String name, String username, boolean hasAcceptedTerms) {
     this.name = name;
     this.username = username;
+    setHasAcceptedTerms(hasAcceptedTerms);
   }
 
   public String getName() {
@@ -24,5 +26,17 @@ public class ApiUser {
 
   public void setUsername(String username) {
     this.username = username;
+  }
+
+  public String getHasAcceptedTerms() {
+    return hasAcceptedTerms;
+  }
+
+  public boolean getHasAcceptedTermsValue() {
+    return hasAcceptedTerms.equals(Boolean.TRUE.toString());
+  }
+
+  public void setHasAcceptedTerms(boolean hasAcceptedTerms) {
+    this.hasAcceptedTerms = hasAcceptedTerms ? Boolean.TRUE.toString() : Boolean.FALSE.toString();
   }
 }

@@ -14,13 +14,13 @@ public class UserRecord {
   private String id;
   private String name;
   private String username;
-
-  private boolean hasAcceptedTermsAndConditions = false;
+  private boolean hasAcceptedTerms = false;
 
   public UserRecord(){}
-  public UserRecord(String name, String username) {
+  public UserRecord(String name, String username, boolean hasAcceptedTerms) {
     this.name = name;
     this.username = username;
+    this.hasAcceptedTerms = hasAcceptedTerms;
   }
 
   public String getId() {
@@ -47,11 +47,11 @@ public class UserRecord {
     this.username = username;
   }
 
-  public boolean hasAcceptedTermsAndConditions() {
-    return hasAcceptedTermsAndConditions;
+  public boolean hasAcceptedTerms() {
+    return hasAcceptedTerms;
   }
 
-  public void setHasAcceptedTermsAndConditions(boolean hasAcceptedTermsAndConditions) {
-    this.hasAcceptedTermsAndConditions = hasAcceptedTermsAndConditions;
+  public void setHasAcceptedTerms(boolean hasAcceptedTermsAndConditions) {
+    this.hasAcceptedTerms = hasAcceptedTermsAndConditions;
   }
 }

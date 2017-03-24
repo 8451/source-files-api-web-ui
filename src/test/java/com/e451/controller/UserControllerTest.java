@@ -1,7 +1,8 @@
 package com.e451.controller;
 
 
-import com.e451.domain.APIUser;
+import com.e451.domain.ApiUser;
+import com.e451.service.ApiUserService;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -9,7 +10,6 @@ import org.junit.Test;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 
-import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,7 +26,8 @@ public class UserControllerTest {
 
   @Test
   public void testUserControllerUserShouldReturnPassedInPrincipal() {
-    UserController testUserController = new UserController();
+    ApiUserService mockApiUserService = mock(ApiUserService.class);
+    UserController testUserController = new UserController(mockApiUserService);
     OAuth2Authentication mockPrincipal = mock(OAuth2Authentication.class);
     Authentication mockAuthentication = mock(Authentication.class);
     Map<String, String> userDetails = new HashMap<String, String>();
@@ -36,7 +37,7 @@ public class UserControllerTest {
     when(mockAuthentication.getDetails()).thenReturn(userDetails);
     when(mockPrincipal.getUserAuthentication()).thenReturn(mockAuthentication);
 
-    APIUser result = testUserController.user(mockPrincipal);
+    ApiUser result = testUserController.user(mockPrincipal);
     Assert.assertEquals("User did not have the correct name", "testname", result.getName());
     Assert.assertEquals("User did not have the correct username", "testusername", result.getUsername());
   }
