@@ -1,24 +1,5 @@
 <div>
-  <md-toolbar color="primary">
-    <img src="./assets/img/8451-logo.png" />
-    <h4> Source Files API</h4>
-    <span class="spacer"></span>
-    <button md-button
-          *ngIf="authService.isLoggedIn"
-          (click)="redirectToProfile()">
-          <md-icon>account_circle</md-icon>{{username}}
-    </button>
-    <button md-button
-          *ngIf="!authService.isLoggedIn"
-          (click)="authService.login()">
-          <md-icon>lock</md-icon>LOGIN
-    </button>
-    <button md-button
-          *ngIf="authService.isLoggedIn"
-          (click)="authService.logOut()">
-          <md-icon>lock_open</md-icon>LOGOUT
-    </button>
-  </md-toolbar>
+  <app-header></app-header>
   <router-outlet></router-outlet>
   <app-footer></app-footer>
 </div>
