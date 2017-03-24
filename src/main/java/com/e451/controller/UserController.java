@@ -44,6 +44,7 @@ public class UserController {
         if(details.containsKey("name")
           && (apiUser.getName() == null || !apiUser.getName().equals(details.get("name")))) {
           apiUser.setName(details.get("name"));
+          saveUser(apiUser);
         }
       }
     }
@@ -52,18 +53,23 @@ public class UserController {
   }
 
   @RequestMapping(path = "/user", method = RequestMethod.POST)
-  public void saveUser(@RequestBody ApiUser apiUser) {
+  public String saveUser(@RequestBody ApiUser apiUser) {
     apiUserService.saveApiUser(apiUser);
+    return Boolean.TRUE.toString();
   }
 
   @RequestMapping(path = "/user", method = RequestMethod.PUT)
-  public void updateUser(@RequestBody ApiUser apiUser) {
+  public String updateUser(@RequestBody ApiUser apiUser) {
     apiUserService.saveApiUser(apiUser);
+    return Boolean.TRUE.toString();
   }
 
   @RequestMapping(path = "/user", method = RequestMethod.DELETE)
-  public void deleteUser(Principal principal) {
-    ApiUser apiUser = user(principal);
-    apiUserService.deleteApiUser(apiUser);
+  public String deleteUser(Principal principal) {
+    if(principal != null) {
+      ApiUser apiUser = user(principal);
+      apiUserService.deleteApiUser(apiUser);
+    }
+    return Boolean.TRUE.toString();
   }
 }

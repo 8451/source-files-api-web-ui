@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { environment } from '../../environments/environment';
+import { ApiKey } from '../models/apiKey.model';
 
 @Injectable()
 export class SourceWebService {
@@ -17,8 +18,15 @@ export class SourceWebService {
         'Error retrieving API Keys'));
   }
 
-  addAPIKey(): Observable<any> {
-    return this.http.get(environment.ADD_API_URL)
+  addAPIKey(appName: string): Observable<any> {
+    let apiKey = new ApiKey();
+    apiKey.name = appName;
+    let headers = new Headers({'Content-Type': 'application/json' });
+    let options = new RequestOptions({headers: headers});
+
+    return this.http.post(environment.ADD_API_URL
+      , JSON.stringify(apiKey)
+      , options)
       .map((response: Response) => {
         return response.json();
       })
@@ -28,7 +36,11 @@ export class SourceWebService {
   }
 
   deleteAPIKey(apiKey): Observable<any> {
-    return this.http.get(environment.DELETE_API_URL)
+    let headers = new Headers({'Content-Type': 'application/json' });
+    let options = new RequestOptions({headers: headers});
+
+    return this.http.delete(`${environment.DELETE_API_URL}/${apiKey.key}`
+      , options)
       .map((response: Response) => {
         return response.json();
       })
@@ -38,7 +50,7 @@ export class SourceWebService {
   }
 
   deleteAccount() {
-    return this.http.get(environment.DELETE_ACCOUNT_URL)
+    return this.http.delete(environment.DELETE_ACCOUNT_URL)
       .map((response: Response) => {
         return response.json();
       })

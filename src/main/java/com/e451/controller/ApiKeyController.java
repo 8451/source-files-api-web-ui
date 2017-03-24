@@ -31,14 +31,17 @@ public class ApiKeyController {
   }
 
   @RequestMapping(path = "/apiKey", method = RequestMethod.POST)
-  public void createApiKey(@RequestBody String name) {
+  public String createApiKey(@RequestBody String name) {
 
     ApiKey apiKey = new ApiKey(name, UUID.randomUUID().toString(), getUsername());
     apiKeyService.saveApiKey(apiKey);
+
+    return Boolean.TRUE.toString();
   }
 
-  @RequestMapping(path = "/apiKey", method = RequestMethod.DELETE)
-  public void deleteApiKey(@RequestBody String key) {
+  @RequestMapping(path = "/apiKey/{key}", method = RequestMethod.DELETE)
+  public String deleteApiKey(@PathVariable(name="key") String key) {
     apiKeyService.deleteApiKey(key);
+    return Boolean.TRUE.toString();
   }
 }

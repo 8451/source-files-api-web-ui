@@ -8,6 +8,7 @@ import { environment } from '../../environments/environment';
 export class AuthService {
 
   isLoggedIn = false;
+  username;
 
   constructor(
     private http: Http,
@@ -16,19 +17,34 @@ export class AuthService {
 
   login(): void {
     this.http.get(environment.userAuthUrl).subscribe(
-                                          (next) => { this.isLoggedIn = true; },
-                                          (error) => { console.log(error); },
-                                          () => { this.router.navigate(['/profile']); });
+      (next) => {
+        this.isLoggedIn = true;
+        // set username once logged in
+      },
+      (error) => { window.location.href = environment.githubAuthorizationUrl; },
+      () => { this.router.navigate(['/profile']); });
+  }
+
+  userInfo(): Observable<any> {
+    return this.http.get(environment.userAuthUrl)
+      .map((response: Response) =>
+        response.json())
+      .catch((error: any) => Observable.throw(error.json().error ||
+        'Error retrieving user info'));
   }
 
   register(): void {
     // navigate to login/authorization entity to register
-     window.location.href = environment.githubAuthorizationUrl;
+    window.location.href = environment.githubAuthorizationUrl;
   }
 
   logOut(): void {
     localStorage.removeItem('userLoggedIn');
     this.isLoggedIn = false;
+    this.http.delete(environment.userAuthUrl).subscribe(
+      (response: Response) => {},
+      (error) => {error.json().error || 'Error deleting account'}
+    );
     this.router.navigate(['/']);
   }
 }
