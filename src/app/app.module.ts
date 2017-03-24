@@ -11,13 +11,11 @@ import { AppComponent } from './app.component';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { DeleteDialogResultComponent } from './user-profile/user-profile.component'; // TODO: extract this into its own component??
 import { SourceWebService } from './services/source-web.service';
 import { AuthService } from './services/auth.service';
 
 import { AuthGuard } from './auth.guard';
-
-import { Config } from './config';
-
 import {} from 'jasmine';
 
 @NgModule({
@@ -25,7 +23,8 @@ import {} from 'jasmine';
     AppComponent,
     TermsAndConditionsComponent,
     RegistrationComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    DeleteDialogResultComponent
   ],
   imports: [
     BrowserModule,
@@ -38,9 +37,9 @@ import {} from 'jasmine';
   providers: [
     SourceWebService,
     AuthService,
-    AuthGuard,
-    Config
+    AuthGuard
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DeleteDialogResultComponent]
 })
 export class AppModule { }

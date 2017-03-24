@@ -1,2 +1,27 @@
 .material-icons.red { color: red; }
 .material-icons.green { color: green; }
+
+.account-delete-heading h2{
+  color: red;
+}
+
+.button-add-key {
+  float: relative;
+  top: 60px;
+  left: 150px;
+  z-index: 500;
+}
+
+.button-delete-key {
+  float: right;
+  display: inline-block;
+}
+
+.api-card md-card {
+  margin: 20px;
+}
+
+.api-key-container {
+  position: relative;
+  display: block;
+}
