@@ -6,7 +6,7 @@
     <button md-button
           *ngIf="authService.isLoggedIn"
           (click)="redirectToRegister()">
-          <md-icon>account_circle</md-icon>{{username}}
+          <md-icon>account_circle</md-icon>{{authService.username}}
     </button>
     <button md-button
           *ngIf="!authService.isLoggedIn"

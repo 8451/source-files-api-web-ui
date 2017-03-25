@@ -10,7 +10,6 @@ import { FooterComponent } from './footer/footer.component';
 })
 export class AppComponent implements AfterViewInit {
   title = 'Source Files API Web';
-  username = 'PROFILE';
 
   constructor(private router: Router,
     public authService: AuthService) {
@@ -19,16 +18,17 @@ export class AppComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.authService.userInfo().subscribe(
       response => {
-        console.log('got add api key response');
-        this.username = response.name;
+        console.log('got user info response');
       },
       error => 'ERROR retrieving user information: ' + <any>error
     );
-
   }
 
   redirectToRegister() {
-    console.log('redirect');
-    this.router.navigate(['/register']);
+    if (this.authService.userObject.hasAcceptedTerms) {
+      this.router.navigate(['/profile'])
+    } else {
+      this.router.navigate(['/register']);
+    }
   }
 }

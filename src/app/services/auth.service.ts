@@ -3,53 +3,45 @@ import { Router } from '@angular/router';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../environments/environment';
+import { User } from '../models/user.model';
 
 @Injectable()
 export class AuthService {
 
   isLoggedIn = false;
-  username;
+  username = 'PROFILE';
+  public userObject = new User();
 
   constructor(
     private http: Http,
     private router: Router
   ) { }
 
-  // call this to attemp login
-  // login(): void {
-  //   this.http.get(environment.userAuthUrl)
-  //   .subscribe(
-  //     (next) => {
-  //       // if not logged in, will get a 200 response but blank body
-  //       if (next) {
-  //         this.isLoggedIn = true;
-  //         this.username = next;
-  //         // set username once logged in
-  //       }
-  //     },
-  //     (error) => { window.location.href = environment.githubAuthorizationUrl; },
-  //     () => { this.router.navigate(['/profile']); });
-  // }
-
   login(): void {
     this.http.get(environment.userAuthUrl)
-        .map(response => response.json())
-        .catch((error: any) => window.location.href = environment.githubAuthorizationUrl)
-        // .subscribe(result => this.result = result);
-        .subscribe(result => {
-        if (result) {
-          this.username = result;
+        .map(response => {
+          console.log('login response', response.json());
+          this.userObject = response.json();
+          this.username = this.userObject.name;
           this.isLoggedIn = true;
           this.router.navigate(['/profile']);
+        })
+        .catch((error: any) => window.location.href = environment.githubAuthorizationUrl)
+        .subscribe(result => {
+        if (result) {
+          // this.isLoggedIn = true;
+          // this.router.navigate(['/profile']);
         }
       })
   }
 
-
   userInfo(): Observable<any> {
     return this.http.get(environment.userAuthUrl)
-      .map((response: Response) =>
-        this.username = response.json().name)
+      .map((response: Response) => {
+        this.userObject = response.json();
+        this.username = this.userObject.name;
+        if (this.username) { this.isLoggedIn = true };
+      })
       .catch((error: any) => Observable.throw(error.json().error ||
         'Error retrieving user info'));
   }
