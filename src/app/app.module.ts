@@ -15,9 +15,12 @@ import { DeleteDialogResultComponent } from './user-profile/user-profile.compone
 import { SourceWebService } from './services/source-web.service';
 import { AuthService } from './services/auth.service';
 
+import { ApiKey } from './models/apiKey.model';
+
 import { AuthGuard } from './auth.guard';
 import {} from 'jasmine';
 import { FooterComponent } from './footer/footer.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import { FooterComponent } from './footer/footer.component';
     RegistrationComponent,
     UserProfileComponent,
     DeleteDialogResultComponent,
-    FooterComponent
+    FooterComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

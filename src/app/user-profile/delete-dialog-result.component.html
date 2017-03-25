@@ -1,6 +1,7 @@
 <h1 md-dialog-title>Delete Account</h1>
 <div md-dialog-content>Are you sure you want to delete your account?</div>
 <div md-dialog-actions>
-  <button md-button (click)="dialogRef.close('yes')">Yes</button>
-  <button md-button (click)="dialogRef.close('no')">No</button>
+  <button md-raised-button color="primary" class="hovercolor" (click)="dialogRef.close('yes')">Yes</button>
+  <span class="spacer"></span>
+  <button md-raised-button md-dialog-close color="primary" class="hovercolor" (click)="dialogRef.close('no')">No</button>
 </div>

@@ -5,10 +5,12 @@ import { SourceWebService } from '../services/source-web.service';
 import { Http, Request, Response, ResponseOptions, RequestOptionsArgs,
   ConnectionBackend, BaseRequestOptions, RequestOptions } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
+import { Router } from '@angular/router';
 
 describe('UserProfileComponent', () => {
   let component: UserProfileComponent;
   let fixture: ComponentFixture<UserProfileComponent>;
+  const mockRouter = { navigate: jasmine.createSpy('navigate') };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -28,6 +30,10 @@ describe('UserProfileComponent', () => {
         },
         MockBackend,
         BaseRequestOptions,
+        {
+          provide: Router,
+          useValue: mockRouter
+        }
       ]
     })
       .compileComponents();

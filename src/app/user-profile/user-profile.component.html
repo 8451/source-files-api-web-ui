@@ -1,3 +1,4 @@
+<h1>Profile</h1>
 <div class="flex-item" fxFlex="5%" fxFlex.xs="10%">
     <button md-button md-fab class="button-add-key"
      md-tooltip="Add New Application Key" (click)="addAPIKey()" [disabled]="!addAnotherAPIKey">
@@ -11,7 +12,7 @@
       <md-icon md-list-avatar>vpn_key</md-icon>
       <h3 md-line>Application: {{key.application}}</h3>
       <p md-line>Key: {{key.key}}
-      <button md-button class="button-delete-key" (click)="deleteAPIKey(key)"><md-icon class="red">delete</md-icon>Delete</button></p>
+      <button md-button class="button-delete-key" (click)="deleteAPIKey(key)"><md-icon class="red">delete</md-icon>DELETE</button></p>
     </md-list-item>
   </md-list>
 </div>
@@ -20,7 +21,7 @@
     <h2>Delete account</h2>
   </div>
   <p>Once you delete your account, there is no going back.  We will delete all of your api keys generated and remove your account from our systems.
-    After this, you will no longer be allowed to hit our api's until you accept
+    After this, you will no longer be allowed to access our api's until you accept
     our <a href="/#/terms" target="_blank">Terms and Conditions</a> and register again.
   </p>
   <button md-raised-button class="button-account-delete" (click)="deleteAccount()"><md-icon>delete_forever</md-icon>Delete your account</button>
