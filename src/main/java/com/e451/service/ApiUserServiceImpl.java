@@ -43,7 +43,18 @@ public class ApiUserServiceImpl implements ApiUserService{
 
   @Override
   public void saveApiUser(ApiUser apiUser) {
-    UserRecord userRecord = apiUserUserRecordConverter.convert(apiUser);
+    UserRecord mayExist = apiUserRepository.findUserRecordByUsername(apiUser.getUsername());
+    UserRecord userRecord = null;
+    if(mayExist != null)
+    {
+      userRecord = mayExist;
+      userRecord.setHasAcceptedTerms(apiUser.getHasAcceptedTermsValue());
+      userRecord.setName(apiUser.getName());
+      userRecord.setUsername(apiUser.getUsername());
+    }
+    else {
+      userRecord = apiUserUserRecordConverter.convert(apiUser);
+    }
     apiUserRepository.save(userRecord);
   }
 

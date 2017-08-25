@@ -1,6 +1,8 @@
 package com.e451.controller;
 
+import com.e451.domain.ApiKey;
 import com.e451.domain.ApiUser;
+import com.e451.service.ApiKeyService;
 import com.e451.service.ApiUserService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -13,16 +15,19 @@ import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 import java.util.Map;
 
 @RestController
 public class UserController {
 
   private ApiUserService apiUserService;
+  private ApiKeyService apiKeyService;
 
   @Autowired
-  public UserController(ApiUserService apiUserService) {
+  public UserController(ApiUserService apiUserService, ApiKeyService apiKeyService) {
     this.apiUserService = apiUserService;
+    this.apiKeyService = apiKeyService;
   }
 
   @ApiResponses(value = {
@@ -65,6 +70,27 @@ public class UserController {
   }
 
   @ApiResponses(value = {
+    @ApiResponse(code = 200, message = "Success", response = ApiUser.class)
+  })
+  @ApiOperation(
+    value = "User",
+    notes = "Returns the currently logged in user",
+    response = ApiUser.class,
+    tags = "user"
+  )
+  @RequestMapping(path = "/userByKey/{key}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+  public ApiUser userByKey(@PathVariable(name="key") String key) {
+    ApiUser apiUser = null;
+    String usernameByKey = apiKeyService.getUsernameByKey(key);
+    if(usernameByKey != null) {
+      apiUser = apiUserService.getApiUserByUsername(usernameByKey);
+    } else {
+      apiUser = new ApiUser("Anonymous","Anonymous", false);
+    }
+    return apiUser;
+  }
+
+  @ApiResponses(value = {
     @ApiResponse(code = 201, message = "Created", response = String.class),
     @ApiResponse(code = 500, message = "An internal service error was thrown")
   })
@@ -99,6 +125,13 @@ public class UserController {
   public String deleteUser(Principal principal) {
     if(principal != null) {
       ApiUser apiUser = user(principal);
+      if(apiUser != null && apiUser.getHasAcceptedTermsValue()) {
+        List<ApiKey> apiKeys = apiKeyService.getApiKeys(apiUser.getUsername());
+        for (ApiKey apiKey :
+          apiKeys) {
+          apiKeyService.deleteApiKey(apiKey.getKey());
+        }
+      }
       apiUserService.deleteApiUser(apiUser);
     }
     return Boolean.TRUE.toString();

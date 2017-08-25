@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../environments/environment';
 import { User } from '../models/user.model';
@@ -46,9 +46,20 @@ export class AuthService {
         'Error retrieving user info'));
   }
 
-  register(): void {
-    // navigate to login/authorization entity to register
-    window.location.href = environment.githubAuthorizationUrl;
+  register(): Observable<any> {
+    this.userObject.hasAcceptedTermsValue=true;
+    this.userObject.hasAcceptedTerms=true;
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+
+    return this.http.post(environment.userAuthUrl
+      , JSON.stringify(this.userObject)
+      , options)
+      .map((response: Response) => {
+        return response.json();
+      })
+      .catch((error: any) => Observable.throw(
+        'Error retrieving API Keys'));
   }
 
   logOut(): void {

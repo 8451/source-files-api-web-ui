@@ -2,6 +2,7 @@ package com.e451.controller;
 
 
 import com.e451.domain.ApiUser;
+import com.e451.service.ApiKeyService;
 import com.e451.service.ApiUserService;
 import org.junit.After;
 import org.junit.Assert;
@@ -27,7 +28,8 @@ public class UserControllerTest {
   @Test
   public void testUserControllerUserShouldReturnPassedInPrincipal() {
     ApiUserService mockApiUserService = mock(ApiUserService.class);
-    UserController testUserController = new UserController(mockApiUserService);
+    ApiKeyService mockApiKeyService = mock(ApiKeyService.class);
+    UserController testUserController = new UserController(mockApiUserService,mockApiKeyService);
     OAuth2Authentication mockPrincipal = mock(OAuth2Authentication.class);
     Authentication mockAuthentication = mock(Authentication.class);
     Map<String, String> userDetails = new HashMap<String, String>();

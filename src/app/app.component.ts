@@ -25,7 +25,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   redirectToRegister() {
-    if (this.authService.userObject.hasAcceptedTerms) {
+    if (this.authService.userObject.hasAcceptedTermsValue) {
       this.router.navigate(['/profile'])
     } else {
       this.router.navigate(['/register']);

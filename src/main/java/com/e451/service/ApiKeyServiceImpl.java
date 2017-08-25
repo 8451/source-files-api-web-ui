@@ -44,6 +44,17 @@ public class ApiKeyServiceImpl implements ApiKeyService{
   }
 
   @Override
+  public String getUsernameByKey(String key) {
+    String username = null;
+    ApiKeyRecord apiKey = apiKeyRecordRepository.findApiKeyRecordByKey(key);
+    if(apiKey != null && apiKey.getUsername() != null)
+    {
+      username = apiKey.getUsername();
+    }
+    return username;
+  }
+
+  @Override
   public void saveApiKey(ApiKey apiKey) {
     apiKeyRecordRepository.save(apiKeyApiKeyRecordConverter.convert(apiKey));
   }

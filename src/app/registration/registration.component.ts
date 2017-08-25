@@ -23,8 +23,13 @@ export class RegistrationComponent implements OnInit {
   }
 
   register(): void {
-    // this.authService.register();
-    this.router.navigate(['/profile']);
+    this.authService.register().subscribe(
+      response => {
+        console.log('registered user');
+        this.router.navigate(['/profile']);
+      },
+      error => 'ERROR: ' + <any>error
+    );
   }
 
   login(): void {
